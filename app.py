@@ -32,15 +32,15 @@ st.set_page_config(
 st.markdown("""
 <style>
     .main-header {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         font-weight: 700;
         color: #1E293B;
         margin-bottom: 0.2rem;
     }
     .sub-header {
-        font-size: 1.05rem;
+        font-size: 1.0rem;
         color: #64748B;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
     }
     .badge-red {
         background-color: #FEE2E2;
@@ -72,16 +72,16 @@ st.markdown("""
     .metric-card {
         background-color: #F8FAFC;
         border-radius: 10px;
-        padding: 16px;
+        padding: 14px;
         border: 1px solid #E2E8F0;
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
     }
     .diff-orig {
         background-color: #FFF1F2;
         border-left: 4px solid #F43F5E;
         padding: 10px 14px;
         border-radius: 0 6px 6px 0;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         color: #9F1239;
         margin-bottom: 8px;
     }
@@ -90,18 +90,37 @@ st.markdown("""
         border-left: 4px solid #22C55E;
         padding: 10px 14px;
         border-radius: 0 6px 6px 0;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         color: #166534;
         margin-bottom: 8px;
     }
     .script-box {
         background-color: #F8FAFC;
         border: 1px dashed #94A3B8;
-        padding: 12px 16px;
+        padding: 10px 14px;
         border-radius: 8px;
         font-style: italic;
         color: #334155;
-        margin: 8px 0;
+        margin: 6px 0;
+        font-size: 0.9rem;
+    }
+    .inspector-panel {
+        background-color: #F8FAFC;
+        border: 2px solid #3B82F6;
+        border-radius: 12px;
+        padding: 16px;
+        position: sticky;
+        top: 20px;
+    }
+    .citation-tag {
+        font-weight: 700;
+        color: #1D4ED8;
+        background-color: #EFF6FF;
+        padding: 3px 8px;
+        border-radius: 6px;
+        border: 1px solid #BFDBFE;
+        display: inline-block;
+        margin-bottom: 4px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -117,20 +136,59 @@ if "review_package" not in st.session_state:
     st.session_state.review_package = None
 if "active_file_name" not in st.session_state:
     st.session_state.active_file_name = "Chưa chọn file"
+if "inspecting_prop_id" not in st.session_state:
+    st.session_state.inspecting_prop_id = None
+
+# Hàm nạp dữ liệu quy tắc luật
+@st.cache_data
+def load_legal_rules_map():
+    rules_path = Path("data/legal_rules.json")
+    if not rules_path.exists():
+        return {}
+    try:
+        with open(rules_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return {r["rule_id"]: r for r in data.get("rules", [])}
+    except Exception:
+        return {}
+
+rules_map = load_legal_rules_map()
 
 # ============================================================
-# SIDEBAR: CẤU HÌNH & CHỌN HỢP ĐỒNG
+# HÀM XỬ LÝ PHA 1: NẠP VÀ BÓC TÁCH TỰ ĐỘNG (AGENT 1 & AGENT 2)
+# ============================================================
+def process_phase_one(contract_text: str, filename: str):
+    """
+    Pha 1: Tiếp nhận văn bản, bóc tách thực thể (Agent 1) và đối chiếu quy định (Agent 2).
+    Chưa chạy Agent 3 để người dùng chủ động kiểm soát.
+    """
+    st.session_state.contract_text = contract_text
+    st.session_state.active_file_name = filename
+    st.session_state.review_package = None
+    st.session_state.inspecting_prop_id = None
+
+    with st.spinner("🤖 Đang bóc tách thông tin (Agent 1) và đối chiếu 28 quy tắc luật (Agent 2)..."):
+        # Agent 1
+        extractor = ExtractorAgent()
+        st.session_state.metadata = extractor.extract(contract_text)
+        
+        # Agent 2
+        analyzer = RiskAnalyzerAgent()
+        st.session_state.risk_result = analyzer.analyze(contract_text)
+
+# ============================================================
+# SIDEBAR: CHỌN NGUỒN TÀI LIỆU
 # ============================================================
 with st.sidebar:
-    st.image("https://img.icons8.com/fluency/96/law.png", width=64)
+    st.image("https://img.icons8.com/fluency/96/law.png", width=60)
     st.title("Pháp lý Thuê nhà AI")
-    st.caption("Multi-Agent System với Human-in-the-Loop")
+    st.caption("Document AI • Bóc tách • Đối chiếu quy định")
     st.divider()
 
     st.subheader("📁 Nguồn Hợp đồng")
     input_method = st.radio(
         "Chọn cách nạp văn bản:",
-        ["Hợp đồng mẫu có sẵn (Dataset)", "Tải lên file của bạn (Docx/PDF/Ảnh/Txt)"],
+        ["Hợp đồng mẫu có sẵn (Dataset)", "Tải lên file của bạn (Scan/Docx/PDF/Txt)"],
         index=0
     )
 
@@ -140,51 +198,45 @@ with st.sidebar:
         if contracts_dir.exists():
             available_files = sorted([f.name for f in contracts_dir.glob("*.txt")])
         
-        # Chọn mẫu đặc trưng
         recommended_samples = [
-            ("HD_015.txt", "HD_015: Rủi ro tiền điện 3.800đ & cấm chấm dứt sớm"),
-            ("HD_001.txt", "HD_001: Mẫu hợp đồng chuẩn mẫu (Sạch 100%)"),
-            ("HD_045.txt", "HD_045: Rủi ro phạt cọc kép & tự ý tăng giá"),
-            ("HD_030.txt", "HD_030: Rủi ro tự ý vào phòng & chậm trả tiền"),
+            ("HD_015.txt", "HD_015: Tiền điện 3.800đ & Cấm chấm dứt sớm"),
+            ("HD_045.txt", "HD_045: Phạt cọc kép & Tự ý tăng giá 15%"),
+            ("HD_001.txt", "HD_001: Mẫu chuẩn Bộ Xây dựng (Sạch 100%)"),
+            ("HD_030.txt", "HD_030: Tự ý vào phòng & Chậm trả tiền"),
         ]
         
         sample_dict = {label: fname for fname, label in recommended_samples}
         selected_label = st.selectbox(
-            "Chọn tình huống mẫu:",
+            "Chọn tình huống mẫu để demo nhanh:",
             list(sample_dict.keys()),
             index=0
         )
         selected_file_name = sample_dict[selected_label]
         file_path = contracts_dir / selected_file_name
 
-        if st.button("📥 Nạp văn bản hợp đồng này", use_container_width=True):
+        if st.button("📥 Nạp & Bóc tách văn bản này", use_container_width=True, type="primary"):
             if file_path.exists():
-                st.session_state.contract_text = file_path.read_text(encoding="utf-8")
-                st.session_state.active_file_name = selected_file_name
-                # Reset kết quả cũ
-                st.session_state.metadata = None
-                st.session_state.risk_result = None
-                st.session_state.review_package = None
-                st.success(f"Đã nạp thành công: {selected_file_name}")
+                text_content = file_path.read_text(encoding="utf-8")
+                process_phase_one(text_content, selected_file_name)
+                st.success(f"Đã nạp và bóc tách thành công: {selected_file_name}")
+                st.rerun()
 
     else:
+        st.caption("ℹ️ **Định dạng hỗ trợ:** Ảnh scan in ấn (`.png`, `.jpg`), tài liệu Word (`.docx`, `.doc`), file PDF scan/text (`.pdf`) hoặc tệp văn bản (`.txt`).\n*(Hệ thống không nhận văn bản viết tay để bảo đảm độ chính xác cao nhất).*")
         uploaded_file = st.file_uploader(
-            "Tải lên văn bản hợp đồng:",
+            "Tải lên tệp tài liệu hợp đồng:",
             type=["docx", "doc", "pdf", "png", "jpg", "jpeg", "txt"]
         )
         if uploaded_file is not None:
-            if st.button("🚀 Xử lý & Bóc tách File", use_container_width=True):
+            if st.button("🚀 Bóc tách & Rà soát tài liệu", use_container_width=True, type="primary"):
                 temp_path = Path("data") / f"temp_upload_{uploaded_file.name}"
                 temp_path.write_bytes(uploaded_file.getbuffer())
                 try:
-                    with st.spinner("Đang xử lý tài liệu (OCR nếu là ảnh/PDF scan)..."):
+                    with st.spinner("Đang xử lý tài liệu (OCR nếu là ảnh scan hoặc PDF)..."):
                         extracted_text = parse_contract_file(temp_path)
-                    st.session_state.contract_text = extracted_text
-                    st.session_state.active_file_name = uploaded_file.name
-                    st.session_state.metadata = None
-                    st.session_state.risk_result = None
-                    st.session_state.review_package = None
-                    st.success(f"Đã trích xuất {len(extracted_text)} ký tự từ {uploaded_file.name}")
+                    process_phase_one(extracted_text, uploaded_file.name)
+                    st.success(f"Đã trích xuất và bóc tách thành công {len(extracted_text)} ký tự!")
+                    st.rerun()
                 except Exception as e:
                     st.error(f"Lỗi khi đọc file: {e}")
                 finally:
@@ -193,293 +245,304 @@ with st.sidebar:
 
     st.divider()
     st.subheader("⚙️ Trạng thái Hệ thống")
-    api_key_set = bool(os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY"))
+    api_key_set = bool(os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("GEMINI_API_KEY"))
     if api_key_set:
         st.success("🟢 API AI: Đã kết nối OpenRouter")
-        st.caption(f"Model: {os.getenv('OPENROUTER_MODEL', 'google/gemini-2.5-flash')}")
+        st.caption(f"Mô hình: `{os.getenv('OPENROUTER_MODEL', 'google/gemini-2.5-flash')}`")
     else:
-        st.warning("🟡 Chưa thấy API Key, chạy chế độ Rule-based offline")
+        st.warning("🟡 Chạy chế độ Rule-based offline (chưa nạp API Key)")
 
-    st.info("💡 **Bộ luật áp dụng:**\n- Bộ luật Dân sự 2015\n- Luật Nhà ở 2023 (số 27/2023/QH15)\n- Nghị định 96/2024/NĐ-CP\n- Nghị định 134/2013/NĐ-CP")
+    st.info("💡 **Bộ luật áp dụng đối chiếu:**\n- Bộ luật Dân sự 2015\n- Luật Nhà ở 2023 (số 27/2023/QH15)\n- Nghị định 134/2013/NĐ-CP\n- Nghị định 96/2024/NĐ-CP")
 
 # ============================================================
 # MAIN CONTENT HEADER
 # ============================================================
 st.markdown('<div class="main-header">⚖️ HỆ THỐNG HỖ TRỢ RÀ SOÁT VÀ ĐỀ XUẤT HỢP ĐỒNG THUÊ NHÀ</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">Phân tích rủi ro pháp lý theo 28 quy tắc chuẩn mực • Trích dẫn Citation vbpl.vn • Hỗ trợ Con người phê duyệt (HITL)</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-header">Bóc tách thông tin có cấu trúc • Đối chiếu quy định pháp luật Việt Nam • Đề xuất câu văn sửa đổi theo yêu cầu (Human-in-the-Loop)</div>', unsafe_allow_html=True)
 
-# THANH HÀNH ĐỘNG CHÍNH
-col_act1, col_act2 = st.columns([3, 1])
-with col_act1:
-    st.write(f"📄 **Tài liệu đang mở:** `{st.session_state.active_file_name}` ({len(st.session_state.contract_text)} ký tự)")
-
-with col_act2:
-    run_btn = st.button("⚡ CHẠY RÀ SOÁT TOÀN DIỆN", type="primary", use_container_width=True, disabled=not bool(st.session_state.contract_text))
-
-# XỬ LÝ KHI BẤM CHẠY PIPELINE
-if run_btn:
-    try:
-        progress_bar = st.progress(0, text="Khởi động pipeline...")
-        
-        # 1. Agent 1: Extractor
-        progress_bar.progress(20, text="🤖 [Agent 1] Đang trích xuất Metadata hợp đồng...")
-        extractor = ExtractorAgent()
-        st.session_state.metadata = extractor.extract(st.session_state.contract_text)
-        
-        # 2. Agent 2: Risk Analyzer
-        progress_bar.progress(50, text="🛡️ [Agent 2] Đang đối chiếu 28 quy tắc pháp lý & trích dẫn điều luật...")
-        analyzer = RiskAnalyzerAgent()
-        st.session_state.risk_result = analyzer.analyze(st.session_state.contract_text)
-        
-        # 3. Agent 3: Proposal & Redlining
-        progress_bar.progress(80, text="✍️ [Agent 3] Đang soạn thảo điều khoản sửa đổi & kịch bản đàm phán...")
-        proposal_agent = ProposalAgent()
-        st.session_state.review_package = proposal_agent.generate_review_package(
-            contract_text=st.session_state.contract_text,
-            risk_analysis=st.session_state.risk_result,
-            metadata=st.session_state.metadata
-        )
-        
-        progress_bar.progress(100, text="✅ Hoàn tất rà soát! Sẵn sàng cho người dùng kiểm duyệt (HITL).")
-        st.success("Hệ thống đã hoàn thành phân tích. Mời bạn kiểm tra các tab bên dưới để duyệt điều khoản!")
-    except Exception as e:
-        st.error(f"Đã xảy ra lỗi trong quá trình chạy: {e}")
+# Trạng thái chưa nạp văn bản
+if not st.session_state.contract_text:
+    st.info("👉 **Bắt đầu:** Vui lòng chọn một bản hợp đồng mẫu hoặc tải lên tệp văn bản/ảnh scan từ thanh menu bên trái để hệ thống tiến hành bóc tách.")
+    
+    col_intro1, col_intro2, col_intro3 = st.columns(3)
+    with col_intro1:
+        st.markdown("""
+        **1. 📄 Nạp tài liệu đa định dạng**
+        - Hỗ trợ tệp Word (`.docx`), PDF (`.pdf`), hoặc ảnh scan in ấn (`.png`, `.jpg`).
+        - Tự động nhận diện chữ tiếng Việt bằng Vision AI.
+        """)
+    with col_intro2:
+        st.markdown("""
+        **2. 🤖 Bóc tách & Đối chiếu tự động**
+        - Trích xuất thông tin Bên A, Bên B, giá thuê, cọc.
+        - Tự động đối chiếu với 28 quy tắc luật (Luật Nhà ở 2023 & BLDS 2015).
+        """)
+    with col_intro3:
+        st.markdown("""
+        **3. 💡 Đề xuất gợi ý & Tra cứu điều luật**
+        - Bấm nút yêu cầu AI soạn thảo câu văn thay thế.
+        - Bấm vào trích dẫn điều luật để mở ngăn tra cứu chi tiết bên phải.
+        """)
+    st.stop()
 
 # ============================================================
-# CÁC TAB HIỂN THỊ CHỨC NĂNG
+# THANH THÔNG TIN TÀI LIỆU HIỆN TẠI
 # ============================================================
-tab1, tab2, tab3, tab4 = st.tabs([
-    "📄 1. Hợp đồng & Metadata",
-    "🛡️ 2. Đánh giá Rủi ro (Agent 2)",
-    "✍️ 3. Đề xuất Sửa đổi & Duyệt HITL (Agent 3)",
-    "📝 4. Hợp đồng Hoàn thiện Sẵn sàng Ký"
-])
+st.markdown(f"📄 **Tài liệu đang xử lý:** `{st.session_state.active_file_name}` ({len(st.session_state.contract_text):,} ký tự)")
 
-# ------------------------------------------------------------
-# TAB 1: NỘI DUNG VĂN BẢN & METADATA
-# ------------------------------------------------------------
-with tab1:
-    if st.session_state.metadata:
-        m = st.session_state.metadata
-        st.subheader("📋 Bảng Thông tin Hợp đồng (Metadata Trích xuất bởi Agent 1)")
-        col_m1, col_m2, col_m3, col_m4 = st.columns(4)
-        with col_m1:
-            st.metric("Chủ nhà (Bên A)", m.lessor_name or "Chưa rõ")
-            st.metric("Khách thuê (Bên B)", m.lessee_name or "Chưa rõ")
-        with col_m2:
-            st.metric("Giá thuê hàng tháng", f"{m.rent_price:,.0f} đ" if m.rent_price else "Chưa rõ")
-            st.metric("Tiền đặt cọc", f"{m.deposit_amount:,.0f} đ" if m.deposit_amount else "Chưa rõ")
-        with col_m3:
-            st.metric("Thời hạn thuê", f"{m.lease_term_months} tháng" if m.lease_term_months else "Chưa rõ")
-            st.metric("Thời hạn báo trước", f"{m.notice_period_days} ngày" if m.notice_period_days else "Chưa rõ")
-        with col_m4:
-            st.metric("Đơn giá tiền điện", m.electricity_price or "Theo thực tế")
-            st.metric("Đơn giá tiền nước", m.water_price or "Theo thực tế")
-        
-        if m.property_address:
-            st.caption(f"📍 **Địa chỉ căn hộ/phòng trọ:** {m.property_address}")
-        st.divider()
+# ============================================================
+# KHU VỰC 1: BẢNG THÔNG TIN HỢP ĐỒNG (AGENT 1 METADATA)
+# ============================================================
+if st.session_state.metadata:
+    m = st.session_state.metadata
+    st.markdown("### 📋 1. Bảng Thông Tin Hợp Đồng (Bóc tách bởi Agent 1)")
+    
+    col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+    with col_m1:
+        st.metric("Chủ nhà (Bên A)", m.lessor_name or "Chưa rõ")
+        st.metric("Khách thuê (Bên B)", m.lessee_name or "Chưa rõ")
+    with col_m2:
+        st.metric("Giá thuê hàng tháng", f"{m.rent_price:,.0f} đ" if m.rent_price else "Chưa rõ")
+        st.metric("Tiền đặt cọc", f"{m.deposit_amount:,.0f} đ" if m.deposit_amount else "Chưa rõ")
+    with col_m3:
+        st.metric("Thời hạn thuê", f"{m.lease_term_months} tháng" if m.lease_term_months else "Chưa rõ")
+        st.metric("Thời hạn báo trước", f"{m.notice_period_days} ngày" if m.notice_period_days else "Chưa rõ")
+    with col_m4:
+        st.metric("Đơn giá tiền điện", m.electricity_price or "Theo thực tế")
+        st.metric("Đơn giá tiền nước", m.water_price or "Theo thực tế")
+    
+    if m.property_address:
+        st.caption(f"📍 **Địa chỉ tài sản thuê:** {m.property_address}")
 
-    st.subheader("📜 Toàn văn Hợp đồng Đang xem xét")
-    if st.session_state.contract_text:
-        st.text_area(
-            "Nội dung văn bản:", 
-            st.session_state.contract_text, 
-            height=350, 
-            disabled=True
-        )
-    else:
-        st.info("Vui lòng chọn hoặc tải lên một bản hợp đồng từ thanh bên trái.")
+    with st.expander("📜 Xem toàn văn nội dung hợp đồng gốc", expanded=False):
+        st.text_area("Toàn văn hợp đồng:", st.session_state.contract_text, height=250, disabled=True)
 
-# ------------------------------------------------------------
-# TAB 2: ĐÁNH GIÁ RỦI RO CỦA AGENT 2
-# ------------------------------------------------------------
-with tab2:
-    if not st.session_state.risk_result:
-        st.info("Chưa có kết quả rà soát. Hãy bấm nút **'⚡ CHẠY RÀ SOÁT TOÀN DIỆN'** phía trên.")
-    else:
-        res = st.session_state.risk_result
-        col_res1, col_res2, col_res3 = st.columns([1, 1, 2])
-        
-        with col_res1:
-            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-            st.metric("Tổng số rủi ro phát hiện", res.total_risks)
-            st.markdown(f'<span class="badge-red">Mức ĐỎ (Cấm): {res.red_risks_count}</span> &nbsp; <span class="badge-yellow">Mức VÀNG (Bất lợi): {res.yellow_risks_count}</span>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-            
-        with col_res2:
-            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-            if res.is_safe:
-                st.metric("Đánh giá độ an toàn", "10.0 / 10.0")
-                st.markdown('<span class="badge-green">HỢP ĐỒNG SẠCH AN TOÀN</span>', unsafe_allow_html=True)
-            else:
-                score = round(max(1.0, 10.0 - (res.red_risks_count * 2.5) - (res.yellow_risks_count * 1.0)), 1)
-                st.metric("Điểm an toàn ban đầu", f"{score} / 10.0")
-                st.markdown('<span class="badge-red">CẦN ĐÀM PHÁN SỬA ĐỔI</span>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+st.divider()
 
-        with col_res3:
-            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-            st.markdown("**Nhận định pháp lý tổng quan:**")
-            st.write(res.overall_assessment)
-            st.markdown('</div>', unsafe_allow_html=True)
-
-        st.subheader("🔎 Chi tiết Từng Điều khoản Vi phạm")
-        if not res.risks:
-            st.success("🎉 Không phát hiện bất kỳ điều khoản vi phạm nào! Hợp đồng tuân thủ đúng pháp luật.")
+# ============================================================
+# KHU VỰC 2: KẾT QUẢ ĐỐI CHIẾU PHÁP LUẬT (AGENT 2)
+# ============================================================
+if st.session_state.risk_result:
+    res = st.session_state.risk_result
+    st.markdown("### 🛡️ 2. Kết Quả Đối Chiếu Quy Định Pháp Luật (Agent 2)")
+    
+    col_r1, col_r2 = st.columns([1, 3])
+    with col_r1:
+        st.markdown('<div class="metric-card">', unsafe_allow_html=True)
+        if res.is_safe or res.total_risks == 0:
+            st.metric("Tình trạng đối chiếu", "Chuẩn mực 100%")
+            st.markdown('<span class="badge-green">HỢP ĐỒNG SẠCH AN TOÀN</span>', unsafe_allow_html=True)
         else:
-            for idx, risk in enumerate(res.risks, 1):
-                badge_class = "badge-red" if risk.risk_level.upper() == "RED" else "badge-yellow"
-                badge_label = "MỨC ĐỎ (Vi phạm điều cấm)" if risk.risk_level.upper() == "RED" else "MỨC VÀNG (Bất bình đẳng)"
-                
-                with st.expander(f"[{idx}] {risk.rule_name} ({risk.risk_level}) - {risk.related_article or 'Điều khoản hợp đồng'}", expanded=True):
-                    st.markdown(f'<span class="{badge_class}">{badge_label}</span> &nbsp; <b>Nhóm:</b> {risk.category}', unsafe_allow_html=True)
-                    st.markdown(f"**Căn cứ pháp lý:** `{risk.legal_basis}`")
-                    if risk.statutory_citation:
-                        st.markdown(f"**Trích dẫn điều luật (Citation):** {risk.statutory_citation}")
-                    if risk.reference_url:
-                        st.markdown(f"🔗 **Tra cứu Cơ sở dữ liệu vbpl.vn:** [{risk.reference_url}]({risk.reference_url})")
+            st.metric("Điểm cần lưu ý", f"{res.total_risks} điều khoản")
+            st.markdown(f'<span class="badge-red">Mức Đỏ: {res.red_risks_count}</span> &nbsp; <span class="badge-yellow">Mức Vàng: {res.yellow_risks_count}</span>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-                    st.markdown("**Trích dẫn nguyên văn câu gốc từ hợp đồng:**")
-                    st.markdown(f'<div class="diff-orig">"{risk.original_clause}"</div>', unsafe_allow_html=True)
+    with col_r2:
+        st.markdown('<div class="metric-card">', unsafe_allow_html=True)
+        st.markdown("**Nhận định tổng quan về hợp đồng:**")
+        st.write(res.overall_assessment)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-                    st.markdown(f"**Giải thích rủi ro:** {risk.explanation}")
-                    if risk.suggested_action:
-                        st.info(f"💡 **Khuyến nghị xử lý:** {risk.suggested_action}")
+    # Chi tiết các điều khoản cần lưu ý
+    if res.risks:
+        with st.expander(f"🔎 Xem danh sách {len(res.risks)} điều khoản phát hiện trong hợp đồng", expanded=False):
+            for idx, r in enumerate(res.risks, 1):
+                badge_cls = "badge-red" if r.risk_level.upper() == "RED" else "badge-yellow"
+                badge_txt = "MỨC ĐỎ (Vi phạm điều cấm)" if r.risk_level.upper() == "RED" else "MỨC VÀNG (Bất lợi thương mại)"
+                st.markdown(f"**[{idx}] {r.rule_name}** &nbsp; <span class='{badge_cls}'>{badge_txt}</span>", unsafe_allow_html=True)
+                st.markdown(f"- **Đoạn văn trong hợp đồng (Nguyên văn):** *\"{r.original_clause}\"*")
+                st.markdown(f"- **Căn cứ đối chiếu:** `{r.legal_basis}`")
+                st.caption(f"Giải thích: {r.explanation}")
+                st.write("---")
 
-# ------------------------------------------------------------
-# TAB 3: ĐỀ XUẤT SỬA ĐỔI, CITATION & VÒNG LẶP HITL
-# ------------------------------------------------------------
-with tab3:
-    if not st.session_state.review_package or not st.session_state.review_package.proposals:
-        st.info("Chưa có đề xuất sửa đổi nào cần duyệt (Hợp đồng không có lỗi hoặc chưa chạy rà soát).")
+st.divider()
+
+# ============================================================
+# KHU VỰC 3: NÚT KÍCH HOẠT ĐỀ XUẤT GỢI Ý (AGENT 3 ON-DEMAND)
+# ============================================================
+st.markdown("### ✍️ 3. Đề Xuất Gợi Ý Sửa Đổi & Tra Cứu Điều Luật")
+
+# Trường hợp hợp đồng sạch hoàn toàn
+if st.session_state.risk_result and st.session_state.risk_result.is_safe:
+    st.success("🎉 **Hợp đồng chuẩn mực, tuân thủ đúng pháp luật:** Không phát hiện điều khoản nào vi phạm điều cấm hoặc bất lợi nghiêm trọng. Bạn có thể an tâm sử dụng bản hợp đồng này mà không cần đề xuất sửa đổi.")
+else:
+    # Nếu Agent 3 CHƯA CHẠY -> Hiển thị nút bấm để người dùng kích hoạt
+    if st.session_state.review_package is None:
+        st.info("💡 Hệ thống đã hoàn tất bóc tách và đối chiếu. Nhấn nút bên dưới nếu bạn muốn **kích hoạt Agent 3** để soạn thảo các câu văn thay thế cân bằng quyền lợi và kịch bản đàm phán gửi chủ nhà:")
+        
+        btn_col1, btn_col2 = st.columns([2, 3])
+        with btn_col1:
+            if st.button("⚡ ĐỀ XUẤT GỢI Ý SỬA ĐỔI (KÍCH HOẠT AGENT 3)", type="primary", use_container_width=True):
+                with st.spinner("✍️ [Agent 3] Đang phân tích rủi ro, soạn thảo câu văn thay thế và kịch bản đàm phán..."):
+                    proposal_agent = ProposalAgent()
+                    st.session_state.review_package = proposal_agent.generate_review_package(
+                        contract_text=st.session_state.contract_text,
+                        risk_analysis=st.session_state.risk_result,
+                        metadata=st.session_state.metadata
+                    )
+                st.success("Đã hoàn thành soạn thảo đề xuất gợi ý!")
+                st.rerun()
+
+    # NẾU AGENT 3 ĐÃ HOÀN THÀNH -> HIỂN THỊ DANH SÁCH GỢI Ý & NGĂN TRA CỨU BÊN PHẢI (SIDE PANEL)
     else:
         pkg = st.session_state.review_package
-        
-        # Tính toán điểm an toàn hiện tại theo trạng thái HITL
-        current_score = HITLController.calculate_post_hitl_safety_score(pkg)
-        all_completed = pkg.is_hitl_completed
-
-        col_h1, col_h2, col_h3 = st.columns([1, 1, 1])
-        with col_h1:
-            st.metric("Điểm an toàn ban đầu", f"{pkg.safety_score}/10.0")
-        with col_h2:
-            st.metric("Điểm an toàn sau khi duyệt", f"{current_score}/10.0", delta=round(current_score - pkg.safety_score, 1))
-        with col_h3:
-            status_text = "✅ ĐÃ DUYỆT XONG TẤT CẢ" if all_completed else "⏳ ĐANG CHỜ DUYỆT"
-            st.metric("Trạng thái HITL", status_text)
-
-        st.caption("💡 **Cơ chế Human-in-the-Loop (HITL):** AI tham mưu câu sửa và căn cứ luật. Bạn có toàn quyền chọn **Chấp thuận (Dùng câu AI)**, **Tự sửa lại theo ý mình**, hoặc **Bác bỏ (Giữ câu gốc của chủ nhà)**.")
-
-        # Nút duyệt nhanh tất cả
-        if st.button("⚡ Duyệt nhanh tất cả đề xuất theo gợi ý của AI (Bulk Approve)", use_container_width=False):
-            HITLController.bulk_approve(pkg)
-            st.success("Đã phê duyệt tất cả các đề xuất của AI!")
-            st.rerun()
-
-        st.divider()
-
-        # Danh sách duyệt từng điều khoản
-        for i, prop in enumerate(pkg.proposals):
-            status_icons = {
-                "APPROVED": "✅ ĐÃ PHÊ DUYỆT (Áp dụng đề xuất AI)",
-                "MODIFIED": "✏️ ĐÃ CHỈNH SỬA (Theo ý riêng của bạn)",
-                "REJECTED": "❌ BÁC BỎ (Giữ nguyên văn gốc chủ nhà)",
-                "PENDING_REVIEW": "⏳ CHỜ BẠN DUYỆT (Pending Review)"
-            }
-            status_badge = status_icons.get(prop.hitl_status, prop.hitl_status)
-
-            with st.container():
-                st.markdown(f"#### Đề xuất {prop.proposal_id}: {prop.rule_name}")
-                st.caption(f"**Vị trí:** {prop.related_article or 'Hợp đồng'} | **Trạng thái hiện tại:** {status_badge}")
-
-                # Bảng so sánh Before vs After
-                col_diff1, col_diff2 = st.columns(2)
-                with col_diff1:
-                    st.markdown("**❌ Câu văn gốc của chủ nhà:**")
-                    st.markdown(f'<div class="diff-orig">"{prop.original_clause}"</div>', unsafe_allow_html=True)
-                with col_diff2:
-                    st.markdown("**✅ Câu văn đề xuất sửa đổi của AI:**")
-                    st.markdown(f'<div class="diff-proposed">"{prop.proposed_clause}"</div>', unsafe_allow_html=True)
-
-                # Dẫn chứng Citation & vbpl.vn
-                st.markdown(f"⚖️ **Căn cứ pháp lý (Citation):** `{prop.statutory_citation}`")
-                if prop.reference_url:
-                    st.markdown(f"🔗 **Cơ sở dữ liệu Quốc gia vbpl.vn:** [{prop.reference_url}]({prop.reference_url})")
-
-                # Kịch bản đàm phán gửi chủ nhà
-                with st.expander("💬 Xem Kịch bản đàm phán gửi chủ nhà", expanded=False):
-                    st.markdown(f'<div class="script-box">"{prop.negotiation_script}"</div>', unsafe_allow_html=True)
-                    if prop.compromise_option:
-                        st.caption(f"🛡️ **Phương án nhượng bộ bậc 2 (dự phòng):** {prop.compromise_option}")
-
-                # CÁC NÚT BẤM HUMAN-IN-THE-LOOP
-                st.markdown("**Hành động của bạn (HITL Decision):**")
-                btn_col1, btn_col2, btn_col3 = st.columns([1, 1, 2])
-
-                with btn_col1:
-                    if st.button(f"✅ Đồng ý dùng câu AI", key=f"app_{prop.proposal_id}", use_container_width=True):
-                        HITLController.review_proposal(pkg, prop.proposal_id, "APPROVE")
-                        st.rerun()
-
-                with btn_col2:
-                    if st.button(f"❌ Giữ nguyên câu gốc", key=f"rej_{prop.proposal_id}", use_container_width=True):
-                        HITLController.review_proposal(pkg, prop.proposal_id, "REJECT")
-                        st.rerun()
-
-                with btn_col3:
-                    with st.popover(f"✏️ Tự sửa câu này theo ý riêng", use_container_width=True):
-                        st.markdown(f"**Chỉnh sửa nội dung cho {prop.proposal_id}:**")
-                        default_edit_val = prop.user_custom_clause or prop.proposed_clause
-                        custom_edit_text = st.text_area(
-                            "Nhập câu văn bạn muốn đưa vào hợp đồng:",
-                            value=default_edit_val,
-                            key=f"txt_{prop.proposal_id}",
-                            height=100
-                        )
-                        note_text = st.text_input("Ghi chú cá nhân (nếu có):", value=prop.user_notes or "", key=f"note_{prop.proposal_id}")
-                        if st.button("💾 Lưu và Chốt câu tự sửa", key=f"save_{prop.proposal_id}"):
-                            HITLController.review_proposal(
-                                pkg, 
-                                prop.proposal_id, 
-                                "MODIFY", 
-                                custom_clause=custom_edit_text,
-                                user_notes=note_text
-                            )
-                            st.success("Đã cập nhật câu văn tự chỉnh sửa!")
-                            st.rerun()
-
-                # Hiển thị câu văn chốt cuối cùng
-                if prop.final_clause:
-                    st.info(f"📌 **Câu văn chốt cuối cùng sẽ vào hợp đồng:** \"{prop.final_clause}\"")
-
-                st.divider()
-
-# ------------------------------------------------------------
-# TAB 4: HỢP ĐỒNG HOÀN THIỆN & XUẤT BẢN
-# ------------------------------------------------------------
-with tab4:
-    if not st.session_state.review_package:
-        st.info("Chưa có hợp đồng nào được rà soát.")
-    else:
-        pkg = st.session_state.review_package
-        
-        # Tái cấu trúc hợp đồng
-        final_contract_text = HITLController.assemble_final_contract(st.session_state.contract_text, pkg)
-        diff_report_md = HITLController.generate_diff_report(pkg)
         post_score = HITLController.calculate_post_hitl_safety_score(pkg)
 
-        st.subheader("📑 Bản Hợp đồng Hoàn thiện (Signed-Ready Contract)")
-        st.caption("Các điều khoản vi phạm đã được tự động thay thế bằng nội dung mà bạn và AI đã phê duyệt ở Tab 3.")
+        # Thanh trạng thái duyệt HITL
+        st.markdown(f"**Trạng thái phiên làm việc:** Đang hiển thị **{len(pkg.proposals)}** đề xuất gợi ý sửa đổi | Điểm tương thích sau khi duyệt: **{post_score}/10.0**")
+        
+        # Nút duyệt nhanh
+        if st.button("✓ Duyệt nhanh tất cả gợi ý AI (Bulk Approve)"):
+            HITLController.bulk_approve(pkg)
+            st.success("Đã đồng ý áp dụng tất cả các câu văn do AI đề xuất!")
+            st.rerun()
+
+        # ========================================================
+        # BỐ CỤC 2 CỘT: CỘT TRÁI (LIST GỢI Ý) & CỘT PHẢI (SIDE PANEL TRA CỨU)
+        # ========================================================
+        col_list, col_drawer = st.columns([7, 5])
+
+        # --------------------------------------------------------
+        # CỘT TRÁI (7 PHẦN): DANH SÁCH CÁC GỢI Ý SỬA ĐỔI
+        # --------------------------------------------------------
+        with col_list:
+            st.markdown("#### 📝 Danh sách Điều khoản Gợi ý Sửa đổi")
+            
+            for i, prop in enumerate(pkg.proposals, 1):
+                status_labels = {
+                    "APPROVED": "✅ ĐÃ ÁP DỤNG CÂU AI",
+                    "MODIFIED": "✏️ ĐÃ TỰ SỬA CÂU CHỮ",
+                    "REJECTED": "❌ GIỮ NGUYÊN VĂN GỐC",
+                    "PENDING_REVIEW": "⏳ CHỜ DUYỆT"
+                }
+                status_txt = status_labels.get(prop.hitl_status, prop.hitl_status)
+
+                with st.container():
+                    st.markdown(f"**Gợi ý {i}: {prop.rule_name}** (`{status_txt}`)")
+                    
+                    # Bảng Before vs After
+                    st.markdown("**❌ Đoạn văn trong hợp đồng (Nguyên văn):**")
+                    st.markdown(f'<div class="diff-orig">"{prop.original_clause}"</div>', unsafe_allow_html=True)
+                    
+                    st.markdown("**💡 Đề xuất câu văn thay thế (Cân bằng quyền lợi):**")
+                    st.markdown(f'<div class="diff-proposed">"{prop.proposed_clause}"</div>', unsafe_allow_html=True)
+
+                    # CITATION IN ĐẬM VÀ NÚT MỞ NGĂN TRA CỨU BÊN PHẢI
+                    st.markdown(f"**⚖️ Trích dẫn:** <span class='citation-tag'>Trích {prop.statutory_citation}</span>", unsafe_allow_html=True)
+                    
+                    c_btn1, c_btn2 = st.columns([2, 1])
+                    with c_btn1:
+                        # Nút bấm mở ngăn tra cứu bên phải
+                        is_current = (st.session_state.inspecting_prop_id == prop.proposal_id)
+                        btn_label = f"📖 Đang xem điều luật này ↗" if is_current else f"📖 Mở thông tin điều luật này ở cạnh phải ↗"
+                        if st.button(btn_label, key=f"inspect_{prop.proposal_id}"):
+                            st.session_state.inspecting_prop_id = prop.proposal_id
+                            st.rerun()
+
+                    # Kịch bản đàm phán gửi chủ nhà
+                    with st.expander("💬 Kịch bản đàm phán lịch sự gửi chủ nhà", expanded=False):
+                        st.markdown(f'<div class="script-box">"{prop.negotiation_script}"</div>', unsafe_allow_html=True)
+
+                    # CÁC NÚT BẤM HUMAN-IN-THE-LOOP
+                    st.markdown("**Hành động của bạn:**")
+                    h_col1, h_col2, h_col3 = st.columns([1, 1, 1])
+                    with h_col1:
+                        if st.button("✅ Đồng ý dùng câu AI", key=f"app_{prop.proposal_id}"):
+                            HITLController.review_proposal(pkg, prop.proposal_id, "APPROVE")
+                            st.rerun()
+                    with h_col2:
+                        if st.button("❌ Giữ câu gốc", key=f"rej_{prop.proposal_id}"):
+                            HITLController.review_proposal(pkg, prop.proposal_id, "REJECT")
+                            st.rerun()
+                    with h_col3:
+                        with st.popover("✏️ Tự sửa câu này"):
+                            edit_val = prop.user_custom_clause or prop.proposed_clause
+                            new_text = st.text_area("Nhập câu chữ riêng của bạn:", value=edit_val, key=f"custom_{prop.proposal_id}", height=120)
+                            if st.button("Lưu câu tự sửa", key=f"save_edit_{prop.proposal_id}"):
+                                HITLController.review_proposal(pkg, prop.proposal_id, "MODIFY", custom_clause=new_text)
+                                st.rerun()
+
+                    if prop.final_clause:
+                        st.caption(f"📌 *Câu văn chốt đưa vào hợp đồng:* \"{prop.final_clause}\"")
+
+                    st.write("---")
+
+        # --------------------------------------------------------
+        # CỘT PHẢI (5 PHẦN): NGĂN TRA CỨU ĐIỀU LUẬT (SIDE PANEL INSPECTOR)
+        # --------------------------------------------------------
+        with col_drawer:
+            st.markdown('<div class="inspector-panel">', unsafe_allow_html=True)
+            st.markdown("#### 📖 NGĂN TRA CỨU ĐIỀU LUẬT (LEGAL INSPECTOR)")
+            st.caption("Thông tin quy định pháp luật tham chiếu theo từng điều khoản")
+
+            # Nếu chưa chọn điều luật nào
+            if not st.session_state.inspecting_prop_id:
+                st.info("👈 **Hướng dẫn:** Bấm vào nút **'📖 Mở thông tin điều luật này ở cạnh phải ↗'** ở bất kỳ gợi ý nào bên trái để xem đầy đủ căn cứ và điều luật tại đây.")
+            else:
+                # Tìm proposal và quy tắc tương ứng
+                target_prop = None
+                for p in pkg.proposals:
+                    if p.proposal_id == st.session_state.inspecting_prop_id:
+                        target_prop = p
+                        break
+                
+                if target_prop:
+                    rule_detail = rules_map.get(target_prop.rule_id, {})
+                    
+                    st.markdown(f"### {target_prop.rule_name}")
+                    st.markdown(f"**Mã quy tắc:** `{target_prop.rule_id}`")
+                    
+                    st.divider()
+                    st.markdown(f"**🏛️ Căn cứ pháp lý chính thức:**")
+                    st.markdown(f"<span class='citation-tag' style='font-size:1rem;'>Trích {target_prop.statutory_citation}</span>", unsafe_allow_html=True)
+
+                    if rule_detail:
+                        st.markdown(f"**📚 Nhóm quy định:** {rule_detail.get('category', 'Pháp luật Nhà ở')}")
+                        st.markdown(f"**⚖️ Chi tiết nội dung pháp luật & Lý giải:**")
+                        st.write(rule_detail.get("explanation", target_prop.explanation))
+                        
+                        if rule_detail.get("trigger_condition"):
+                            st.markdown(f"**⚠️ Dấu hiệu vi phạm / không phù hợp:**")
+                            st.write(rule_detail.get("trigger_condition"))
+                    else:
+                        st.write(target_prop.explanation)
+
+                    # Link tra cứu văn bản quy phạm pháp luật vbpl.vn
+                    ref_url = target_prop.reference_url or (rule_detail.get("reference_url") if rule_detail else None)
+                    if ref_url:
+                        st.markdown(f"""
+                        <div style="margin: 14px 0;">
+                            <a href="{ref_url}" target="_blank" style="text-decoration:none;">
+                                <button style="background-color:#2563EB; color:white; border:none; padding:8px 14px; border-radius:8px; font-weight:600; font-size:0.85rem; cursor:pointer;">
+                                    🔗 Mở toàn văn trên Cơ sở dữ liệu vbpl.vn ↗
+                                </button>
+                            </a>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    
+                    st.divider()
+                    if st.button("✕ Đóng ngăn tra cứu", use_container_width=True):
+                        st.session_state.inspecting_prop_id = None
+                        st.rerun()
+
+            st.markdown('</div>', unsafe_allow_html=True)
+
+        # ========================================================
+        # KHU VỰC 4: XUẤT BẢN HỢP ĐỒNG HOÀN THIỆN
+        # ========================================================
+        st.divider()
+        st.markdown("### 📝 4. Xuất Bản Hợp Đồng Hoàn Thiện Sẵn Sàng Ký")
+        
+        final_contract_text = HITLController.assemble_final_contract(st.session_state.contract_text, pkg)
+        diff_report_md = HITLController.generate_diff_report(pkg)
 
         col_f1, col_f2 = st.columns(2)
         with col_f1:
-            st.metric("Điểm an toàn hợp đồng sau khi sửa", f"{post_score}/10.0")
+            st.metric("Điểm an toàn hợp đồng sau khi xử lý", f"{post_score}/10.0")
         with col_f2:
             verdict_final = "AN TOÀN - CÓ THỂ KÝ KẾT" if post_score >= 8.0 else "CẦN THẬN TRỌNG THÊM"
             st.metric("Phán quyết sau cùng", verdict_final)
 
-        # Download Buttons
         col_dl1, col_dl2 = st.columns(2)
         with col_dl1:
             st.download_button(
@@ -498,8 +561,5 @@ with tab4:
                 use_container_width=True
             )
 
-        st.text_area(
-            "Toàn văn hợp đồng sẵn sàng in/ký:",
-            final_contract_text,
-            height=450
-        )
+        with st.expander("👁️ Xem trước toàn văn hợp đồng sau chỉnh sửa", expanded=False):
+            st.text_area("Nội dung hoàn thiện:", final_contract_text, height=350, disabled=True)

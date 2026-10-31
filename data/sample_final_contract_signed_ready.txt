@@ -34,7 +34,7 @@ Hai bên chúng tôi thống nhất ký kết hợp đồng cho thuê nhà ở v
 Điều 2. Giá thuê nhà ở và chi phí dịch vụ
 1. Giá thuê nhà ở là: 10,000,000 đồng/tháng (Bằng chữ: Mười triệu đồng).
 Giá thuê này được giữ nguyên cố định trong toàn bộ thời hạn thuê quy định tại Điều 4 của Hợp đồng này.
-2. Đơn giá tiền điện sinh hoạt được tính theo đúng biểu giá bán lẻ điện do Nhà nước quy định tại thời điểm thanh toán, áp dụng cho mục đích sinh hoạt và được tính theo công tơ riêng. Bên A có trách nhiệm cung cấp hóa đơn điện hoặc thông báo giá điện chính thức từ đơn vị cung cấp điện khi có yêu cầu từ Bên B.
+2. Đơn giá tiền điện sinh hoạt được tính theo đúng biểu giá bán lẻ điện do Nhà nước quy định tại thời điểm thanh toán, theo công tơ riêng. Bên A có trách nhiệm cung cấp hóa đơn điện hoặc sao kê chi tiết để Bên B đối chiếu.
 3. Đơn giá tiền nước sinh hoạt: Theo hóa đơn nhà nước.
 4. Phí dịch vụ quản lý, vệ sinh, internet: 150.000 đồng/phòng/tháng.
 
