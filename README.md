@@ -1,4 +1,4 @@
-# ⚖️ Multi-Agent Legal AI - Rà Soát & Đánh Giá Rủi Ro Hợp Đồng Thuê Nhà
+# ⚖️ Hệ Thống Hỗ Trợ Rà Soát và Đề Xuất Hợp Đồng Thuê Nhà
 
 Hệ thống **Document AI** và **Multi-Agent Reflection** hỗ trợ nhận diện, bóc tách dữ liệu có cấu trúc và đánh giá rủi ro pháp lý trong các hợp đồng thuê nhà ở/phòng trọ tại Việt Nam.
 
@@ -127,3 +127,4 @@ python test_risk_analyzer.py
 # Kiểm thử Agent 3: Đề xuất câu văn sửa đổi (Redlining)
 python test_proposal_pipeline.py
 ```
+

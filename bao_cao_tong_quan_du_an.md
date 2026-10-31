@@ -1,5 +1,5 @@
 # BÁO CÁO TỔNG QUAN DỰ ÁN NLP
-## ĐỀ TÀI: HỆ THỐNG DOCUMENT AI & MULTI-AGENT RÀ SOÁT, BÓC TÁCH DỮ LIỆU VÀ ĐÁNH GIÁ RỦI RO PHÁP LÝ HỢP ĐỒNG THUÊ NHÀ
+## ĐỀ TÀI: HỆ THỐNG HỖ TRỢ RÀ SOÁT VÀ ĐỀ XUẤT HỢP ĐỒNG THUÊ NHÀ
 *Cập nhật theo định hướng của Giảng viên hướng dẫn & Mentor*
 
 ---

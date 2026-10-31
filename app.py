@@ -22,7 +22,7 @@ from src.parsers import parse_contract_file
 # CẤU HÌNH GIAO DIỆN STREAMLIT
 # ============================================================
 st.set_page_config(
-    page_title="Multi-Agent Legal AI - Rà soát Hợp đồng Thuê nhà",
+    page_title="Hệ thống hỗ trợ rà soát và đề xuất hợp đồng thuê nhà",
     page_icon="⚖️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -205,7 +205,7 @@ with st.sidebar:
 # ============================================================
 # MAIN CONTENT HEADER
 # ============================================================
-st.markdown('<div class="main-header">⚖️ HỆ THỐNG RÀ SOÁT & ĐÀM PHÁN HỢP ĐỒNG THUÊ NHÀ</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">⚖️ HỆ THỐNG HỖ TRỢ RÀ SOÁT VÀ ĐỀ XUẤT HỢP ĐỒNG THUÊ NHÀ</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-header">Phân tích rủi ro pháp lý theo 28 quy tắc chuẩn mực • Trích dẫn Citation vbpl.vn • Hỗ trợ Con người phê duyệt (HITL)</div>', unsafe_allow_html=True)
 
 # THANH HÀNH ĐỘNG CHÍNH

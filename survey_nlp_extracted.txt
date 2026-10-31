@@ -1,4 +1,4 @@
-Đề tài: Ứng dụng hệ thống Multi-Agent trong việc rà soát, phát hiện rủi ro và đề xuất điều khoản hợp đồng thuê nhà.
+Đề tài: Hệ thống hỗ trợ rà soát và đề xuất hợp đồng thuê nhà
 
 1. Đặt vấn đề & Bối cảnh (Context)
 

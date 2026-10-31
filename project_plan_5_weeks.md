@@ -1,5 +1,5 @@
 # KẾ HOẠCH CHI TIẾT 5 TUẦN (SPRINT PLAN)
-## Đề tài: Hệ thống Multi-Agent Rà soát, Phát hiện Rủi ro & Đề xuất Điều khoản Hợp đồng Thuê nhà
+## Đề tài: Hệ thống Hỗ trợ Rà soát và Đề xuất Hợp đồng Thuê nhà
 
 - **Quy mô:** 1 người thực hiện
 - **Thời lượng:** 5 tuần (35 ngày)
