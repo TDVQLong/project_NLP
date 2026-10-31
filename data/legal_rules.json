@@ -1,0 +1,513 @@
+{
+  "version": "1.3",
+  "description": "Bộ quy tắc rà soát rủi ro pháp lý & thương mại cho hợp đồng thuê nhà theo Bộ luật Dân sự 2015, Luật Nhà ở 2023 (Luật số 27/2023/QH15), Luật Kinh doanh bất động sản 2023 & Nghị định 96/2024/NĐ-CP (Cơ sở dữ liệu Quốc gia vbpl.vn)",
+  "total_rules": 28,
+  "rules": [
+    {
+      "rule_id": "RULE_DEPOSIT_NON_REFUNDABLE",
+      "rule_name": "Tịch thu toàn bộ tiền cọc vô điều kiện khi chấm dứt hợp đồng",
+      "category": "Đặt cọc & Hoàn cọc",
+      "risk_level": "RED",
+      "legal_basis": "Điều 328 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định người thuê chấm dứt hợp đồng trước hạn vì bất kỳ lý do gì đều mất 100% tiền đặt cọc, kể cả khi đã báo trước hợp lý hoặc do lỗi của bên cho thuê.",
+      "explanation": "Theo Điều 328 BLDS 2015, khi hợp đồng kết thúc hợp pháp, tiền cọc phải được hoàn trả cho bên thuê (hoặc trừ vào nghĩa vụ trả tiền). Quy định tịch thu 100% cọc trong mọi trường hợp là bẫy bất bình đẳng, tước bỏ quyền đơn phương chấm dứt hợp pháp khi có lý do chính đáng.",
+      "suggested_clause": "Nếu Bên B chấm dứt hợp đồng trước hạn và đã thông báo trước bằng văn bản tối thiểu 30 ngày cho Bên A thì Bên A sẽ hoàn trả lại 50% tiền cọc (hoặc 100% nếu tìm được người thuê thay thế). Trường hợp Bên A vi phạm nghĩa vụ hợp đồng, Bên B có quyền chấm dứt và Bên A phải hoàn trả 100% tiền cọc.",
+      "keywords": [
+        "mất cọc",
+        "mất toàn bộ tiền cọc",
+        "không được hoàn lại tiền cọc",
+        "tịch thu cọc",
+        "mất 100% cọc"
+      ],
+      "statutory_citation": "Điều 328 Bộ luật Dân sự 2015",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_DOUBLE_PENALTY",
+      "rule_name": "Áp dụng phạt cọc kép (vừa mất cọc vừa bồi thường thêm tiền)",
+      "category": "Phạt vi phạm & Bồi thường",
+      "risk_level": "RED",
+      "legal_basis": "Điều 328 & Điều 418 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định bên thuê vi phạm hoặc chấm dứt trước hạn vừa bị mất toàn bộ tiền đặt cọc, vừa phải trả thêm một khoản phạt vi phạm tương đương nhiều tháng tiền thuê.",
+      "explanation": "Theo Điều 418 BLDS 2015 và nguyên tắc công bằng, tiền cọc đã mang bản chất chế tài bảo đảm. Việc vừa tịch thu cọc vừa phạt thêm nhiều tháng tiền nhà là hình thức chế tài kép bất hợp lý, xâm phạm quyền lợi của người thuê.",
+      "suggested_clause": "Trường hợp Bên B đơn phương chấm dứt hợp đồng mà không báo trước đủ 30 ngày, Bên B sẽ chỉ chịu mất số tiền đã đặt cọc như một khoản bồi thường duy nhất; không áp dụng thêm bất kỳ khoản phạt vi phạm nào khác.",
+      "keywords": [
+        "vừa mất cọc vừa phạt",
+        "bồi thường thêm",
+        "phạt thêm 02 tháng",
+        "phạt thêm 01 tháng",
+        "chế tài kép"
+      ],
+      "statutory_citation": "Điều 328",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_EXCESSIVE_LATE_PAYMENT_PENALTY",
+      "rule_name": "Phạt chậm thanh toán vượt trần lãi suất hoặc phạt cố định phi lý",
+      "category": "Phạt vi phạm & Bồi thường",
+      "risk_level": "RED",
+      "legal_basis": "Điều 418 & Điều 468 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định mức phạt chậm thanh toán tiền thuê theo mức cố định quá cao (ví dụ: phạt 200.000đ - 500.000đ/ngày) hoặc áp mức lãi suất phạt vượt quá trần 20%/năm quy định tại Điều 468 BLDS.",
+      "explanation": "Theo Điều 418 và Điều 468 BLDS 2015, chế tài phạt hợp đồng không được vượt quá giới hạn trần lãi suất luật định (20%/năm của số tiền chậm nộp). Mức phạt cố định hàng trăm nghìn đồng/ngày cho các giao dịch thuê trọ là hành vi trục lợi trái pháp luật.",
+      "suggested_clause": "Trường hợp Bên B chậm thanh toán tiền thuê nhà quá 05 ngày so với kỳ hạn mà không có lý do chính đáng được Bên A chấp thuận, Bên B chịu lãi suất chậm trả bằng 0,05%/ngày (không quá 20%/năm) tính trên số tiền thực tế chậm trả cho những ngày quá hạn.",
+      "keywords": [
+        "phạt 200.000 đ/ngày",
+        "phạt 500.000 đ/ngày",
+        "phạt chậm tiền",
+        "phạt mỗi ngày chậm",
+        "lãi suất phạt"
+      ],
+      "statutory_citation": "Điều 418",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_UNANNOUNCED_ENTRY",
+      "rule_name": "Chủ nhà tự ý vào phòng kiểm tra không cần báo trước",
+      "category": "Quyền riêng tư & Sử dụng",
+      "risk_level": "RED",
+      "legal_basis": "Điều 22 Hiến pháp 2013 & Điều 10 Luật Nhà ở 2023",
+      "trigger_condition": "Điều khoản cho phép Bên A hoặc người quản lý có quyền tự ý vào phòng kiểm tra an ninh, kiểm tra hiện trạng bất cứ lúc nào mà không cần thông báo hoặc không cần sự đồng ý của Bên B.",
+      "explanation": "Vi phạm nghiêm trọng quyền bất khả xâm phạm về chỗ ở của công dân (Điều 22 Hiến pháp 2013) và quyền sử dụng nhà ở hợp pháp của người thuê (Điều 10 Luật Nhà ở 2023).",
+      "suggested_clause": "Bên A chỉ có quyền vào kiểm tra hiện trạng phòng thuê khi có sự đồng ý của Bên B và phải thông báo trước tối thiểu 24 giờ. Bên A chỉ được vào mà không báo trước trong các tình huống khẩn cấp đe dọa trực tiếp đến an toàn tính mạng hoặc tài sản chung (hỏa hoạn, rò rỉ khí gas, ngập lụt).",
+      "keywords": [
+        "tự ý vào phòng",
+        "kiểm tra bất kỳ lúc nào",
+        "không cần báo trước",
+        "không cần sự đồng ý",
+        "giữ chìa khóa phụ tự mở"
+      ],
+      "statutory_citation": "Điều 22 Hiến pháp 2013",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=32801"
+    },
+    {
+      "rule_id": "RULE_RETAINING_PERSONAL_PROPERTY",
+      "rule_name": "Chủ nhà tự ý khóa phòng, giam giữ tài sản cá nhân khi chậm tiền",
+      "category": "Quyền riêng tư & Sử dụng",
+      "risk_level": "RED",
+      "legal_basis": "Điều 158 Bộ luật Dân sự 2015 & Điều 172 (khoản 2, khoản 4) Luật Nhà ở 2023",
+      "trigger_condition": "Hợp đồng quy định khi Bên B chậm nộp tiền thuê chỉ vài ngày, Bên A có quyền tự ý khóa cửa phòng, cắt điện nước và tạm giữ, thanh lý tài sản cá nhân của Bên B.",
+      "explanation": "Điều 172 khoản 2 và khoản 4 Luật Nhà ở 2023 quy định trình tự đơn phương chấm dứt hợp đồng phải thông báo trước tối thiểu 30 ngày. Hành vi tự ý khóa cửa, cắt tiện ích và giam giữ tài sản cá nhân sau vài ngày chậm tiền là hành vi xâm phạm tài sản trái luật (Điều 158 BLDS).",
+      "suggested_clause": "Trường hợp Bên B chậm thanh toán quá 15 ngày kể từ ngày đến hạn, Bên A có quyền gửi thông báo nhắc nhở bằng văn bản. Mọi biện pháp chấm dứt hợp đồng phải tuân thủ trình tự luật định; Bên A tuyệt đối không được tự ý khóa phòng, cắt điện nước sinh hoạt hoặc chiếm giữ tài sản riêng của Bên B.",
+      "keywords": [
+        "khóa cửa phòng",
+        "giữ tài sản",
+        "thanh lý đồ đạc",
+        "tịch thu tài sản",
+        "vứt đồ ra ngoài",
+        "cắt điện nước sau vài ngày"
+      ],
+      "statutory_citation": "Điều 158 Bộ luật Dân sự 2015",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_SHORT_NOTICE_EVICTION",
+      "rule_name": "Chủ nhà lấy lại phòng với thời hạn báo trước quá ngắn (< 30 ngày)",
+      "category": "Chấm dứt Hợp đồng",
+      "risk_level": "RED",
+      "legal_basis": "Điều 172 (khoản 2, khoản 4) Luật Nhà ở 2023 & Điều 474 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng cho phép Bên A có quyền lấy lại nhà, chấm dứt hợp đồng với thời hạn báo trước dưới 30 ngày (ví dụ 3 ngày, 7 ngày, 15 ngày) mà không do lỗi nghiêm trọng của bên thuê.",
+      "explanation": "Theo Điều 172 khoản 4 Luật Nhà ở 2023, bên đơn phương chấm dứt hợp đồng phải thông báo trước cho bên kia ít nhất 30 ngày, trừ khi có thỏa thuận khác nhưng không được tước đoạt điều kiện tối thiểu để người thuê tìm chỗ ở mới.",
+      "suggested_clause": "Trường hợp Bên A muốn lấy lại nhà trước thời hạn hợp đồng, Bên A phải thông báo trước bằng văn bản tối thiểu 30 ngày cho Bên B, hoàn trả lại 100% tiền đặt cọc và bồi thường cho Bên B một khoản tiền tương đương 01 tháng tiền thuê.",
+      "keywords": [
+        "báo trước 3 ngày",
+        "báo trước 7 ngày",
+        "báo trước 15 ngày",
+        "lấy lại nhà bất cứ lúc nào",
+        "yêu cầu chuyển đi ngay"
+      ],
+      "statutory_citation": "Điều 172 (khoản 2, khoản 4) Luật Nhà ở 2023",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_ARBITRARY_RENT_INCREASE",
+      "rule_name": "Tự ý tăng giá thuê trong thời hạn hợp đồng",
+      "category": "Giá thuê & Thanh toán",
+      "risk_level": "RED",
+      "legal_basis": "Điều 170 Luật Nhà ở 2023 & Điều 473 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng cho phép Bên A có quyền điều chỉnh, tăng giá thuê phòng (ví dụ tăng 10%–15% sau 6 tháng) khi chưa hết thời hạn hợp đồng hoặc chưa có sự thỏa thuận đồng ý của Bên B.",
+      "explanation": "Điều 170 Luật Nhà ở 2023 quy định rõ về thỏa thuận giá thuê nhà và việc thay đổi giá. Chủ nhà tự ý tăng giá thuê giữa chừng khi chưa hết hạn hợp đồng là hành vi vi phạm thỏa thuận cam kết và vi phạm luật định.",
+      "suggested_clause": "Giá thuê nhà được giữ nguyên và cố định trong toàn bộ thời hạn thuê quy định tại hợp đồng này. Mọi đề xuất điều chỉnh giá chỉ có hiệu lực khi hai bên cùng đồng thuận bằng văn bản phụ lục sau khi hết kỳ hạn thuê.",
+      "keywords": [
+        "tự ý tăng giá",
+        "điều chỉnh giá thuê bất kỳ lúc nào",
+        "tăng 10%",
+        "tăng 15% sau 6 tháng",
+        "tăng giá theo thị trường"
+      ],
+      "statutory_citation": "Điều 170 Luật Nhà ở 2023",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_OWNERSHIP_TRANSFER_EVICTION",
+      "rule_name": "Đuổi người thuê hoặc hủy hợp đồng trái luật khi nhà đổi chủ (bán, chuyển nhượng)",
+      "category": "Chấm dứt Hợp đồng & Chuyển nhượng",
+      "risk_level": "RED",
+      "legal_basis": "Quyền tiếp tục thuê nhà khi chuyển quyền sở hữu (Luật Nhà ở 2023 & Điều 480 Bộ luật Dân sự 2015)",
+      "trigger_condition": "Hợp đồng quy định khi Bên A bán, chuyển nhượng hoặc thế chấp căn nhà thì hợp đồng thuê đương nhiên chấm dứt và Bên B phải lập tức trả nhà mà không có quyền tiếp tục thuê.",
+      "explanation": "Theo pháp luật Nhà ở và Điều 480 BLDS 2015, khi chủ sở hữu chuyển giao quyền sở hữu nhà ở đang cho thuê, người thuê vẫn có quyền tiếp tục thuê đến hết hạn hợp đồng. Chủ mới phải kế thừa toàn bộ quyền và nghĩa vụ đối với bên thuê.",
+      "suggested_clause": "Trường hợp Bên A chuyển nhượng quyền sở hữu căn nhà cho bên thứ ba trong thời hạn hợp đồng, hợp đồng thuê nhà này vẫn giữ nguyên hiệu lực pháp lý; chủ sở hữu mới có trách nhiệm kế thừa toàn bộ quyền, nghĩa vụ và tiền cọc của Bên B cho đến khi hết hạn hợp đồng.",
+      "keywords": [
+        "khi bán nhà hợp đồng chấm dứt",
+        "chuyển nhượng nhà phải dọn đi",
+        "đổi chủ nhà phải trả phòng",
+        "chủ mới lấy lại nhà"
+      ],
+      "statutory_citation": "Quyền tiếp tục thuê nhà khi chuyển quyền sở hữu (Luật Nhà ở 2023",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_TENANT_NO_EARLY_EXIT",
+      "rule_name": "Cấm tuyệt đối người thuê chấm dứt hợp đồng trước hạn",
+      "category": "Chấm dứt Hợp đồng",
+      "risk_level": "RED",
+      "legal_basis": "Điều 428 Bộ luật Dân sự 2015 & Điều 172 Luật Nhà ở 2023",
+      "trigger_condition": "Điều khoản ràng buộc bên thuê bắt buộc phải ở hết thời hạn hợp đồng, không được quyền chấm dứt sớm trong bất kỳ hoàn cảnh nào.",
+      "explanation": "Hạn chế quyền đơn phương chấm dứt hợp đồng hợp pháp của người thuê khi có các biến cố khách quan như chuyển công tác, gia đình hoặc chỗ ở không còn bảo đảm an toàn kỹ thuật.",
+      "suggested_clause": "Bên B có quyền chấm dứt hợp đồng trước thời hạn với điều kiện thông báo bằng văn bản hoặc tin nhắn xác nhận cho Bên A trước tối thiểu 30 ngày và thực hiện nghĩa vụ bàn giao nhà theo thỏa thuận.",
+      "keywords": [
+        "không được chấm dứt trước hạn",
+        "bắt buộc ở hết hợp đồng",
+        "không cho chuyển đi"
+      ],
+      "statutory_citation": "Điều 428 Bộ luật Dân sự 2015",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_ELECTRICITY_OVERCHARGE",
+      "rule_name": "Thu tiền điện sinh hoạt vượt trần nhà nước quy định",
+      "category": "Chi phí & Phụ phí",
+      "risk_level": "YELLOW",
+      "legal_basis": "Khoản 7 Điều 13 Nghị định 134/2013/NĐ-CP (sửa đổi, bổ sung bởi Nghị định 17/2022/NĐ-CP) & Thông tư 25/2018/TT-BCT của Bộ Công Thương",
+      "trigger_condition": "Quy định giá điện quá cao (ví dụ bẫy thu 4.500đ/kWh, 5.000đ/kWh) vượt quá mức trần bán lẻ điện sinh hoạt bậc thang của Nhà nước.",
+      "explanation": "Theo Khoản 7 Điều 13 Nghị định 134/2013/NĐ-CP (được sửa đổi, bổ sung bởi Nghị định 17/2022/NĐ-CP), hành vi thu tiền điện của người thuê nhà cao hơn mức giá quy định trong biểu giá bán lẻ điện của Bộ Công Thương là vi phạm pháp luật và bị xử phạt vi phạm hành chính.",
+      "suggested_clause": "Tiền điện sinh hoạt được tính theo chỉ số công tơ riêng của phòng theo đúng khung biểu giá bán lẻ điện sinh hoạt do Nhà nước quy định (hoặc chia đều theo hóa đơn thực tế của Điện lực). Bên A cam kết không thu vượt mức trần luật định.",
+      "keywords": [
+        "giá điện 4.500",
+        "giá điện 5.000",
+        "4500 đ/kwh",
+        "thu tiền điện cố định",
+        "tự điều chỉnh giá điện"
+      ],
+      "statutory_citation": "Khoản 7 Điều 13 Nghị định 134/2013/NĐ-CP (sửa đổi, bổ sung bởi Nghị định 17/2022/NĐ-CP)",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=32371"
+    },
+    {
+      "rule_id": "RULE_STRUCTURAL_MAINTENANCE_SHIFT",
+      "rule_name": "Đùn đẩy chi phí sửa chữa kết cấu lớn cho người thuê",
+      "category": "Bảo trì & Hư hỏng",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 477 Bộ luật Dân sự 2015 & Điều 161 Luật Nhà ở 2023",
+      "trigger_condition": "Bắt người thuê phải chịu chi phí sửa chữa thấm dột, nứt tường trần, hỏng hóc đường ống nước ngầm, chập hệ thống điện ngầm do hao mòn thời gian.",
+      "explanation": "Điều 477 BLDS 2015 quy định bên cho thuê phải bảo đảm giá trị sử dụng của tài sản thuê, có nghĩa vụ bảo dưỡng, sửa chữa kết cấu lớn. Hành vi ép người thuê chịu chi phí sửa kết cấu ngầm là vi phạm pháp luật.",
+      "suggested_clause": "Bên A có trách nhiệm sửa chữa kịp thời các hư hỏng lớn về kết cấu nhà ở (thấm dột, nứt trần, hỏng đường ống nước ngầm, sự cố điện ngầm) mà không thu phí của Bên B. Bên B chỉ chịu chi phí sửa chữa các hư hỏng nhỏ do lỗi sử dụng trực tiếp của mình.",
+      "keywords": [
+        "tự chịu chi phí sửa chữa nhà",
+        "thấm dột tự sửa",
+        "mọi hư hỏng tự chịu",
+        "sửa chữa kết cấu ngầm",
+        "nứt tường tự sửa"
+      ],
+      "statutory_citation": "Điều 477 Bộ luật Dân sự 2015",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_REFUSAL_NATURAL_WEAR_TEAR",
+      "rule_name": "Bác bỏ hao mòn tự nhiên, ép bồi thường thiết bị điện tử, điện máy cũ",
+      "category": "Bảo trì & Hư hỏng",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 477 & Điều 479 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng ép bên thuê phải bồi thường 100% chi phí sửa chữa, thay mới linh kiện máy lạnh, máy giặt, bình nóng lạnh cũ bị hư hỏng do hết niên hạn sử dụng, hoặc từ chối trừ phần 'khấu hao tự nhiên' khi nhận lại phòng.",
+      "explanation": "Theo Điều 479 BLDS 2015, người thuê trả lại tài sản trong tình trạng như khi nhận nhưng được trừ đi phần 'khấu hao tự nhiên'. Thiết bị điện lạnh, điện gia dụng có khấu hao niên hạn sử dụng thuộc trách nhiệm duy tu của chủ sở hữu.",
+      "suggested_clause": "Bên B không phải chịu trách nhiệm đối với các hao mòn tự nhiên của thiết bị điện máy (máy lạnh, bình nóng lạnh, máy giặt) và lớp sơn tường sau thời gian sử dụng bình thường. Trường hợp thiết bị hỏng do hết tuổi thọ hoặc sự cố linh kiện ngầm, Bên A có trách nhiệm bảo dưỡng, sửa chữa.",
+      "keywords": [
+        "hỏng máy lạnh tự sửa",
+        "bình nóng lạnh hỏng tự chịu",
+        "từ chối khấu hao tự nhiên",
+        "hư hỏng linh kiện cũ"
+      ],
+      "statutory_citation": "Điều 477",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_OBSTRUCTING_TEMPORARY_RESIDENCE",
+      "rule_name": "Chủ nhà cản trở, từ chối hỗ trợ đăng ký tạm trú hoặc thu phụ phí tạm trú",
+      "category": "Nghĩa vụ Cư trú & Pháp lý",
+      "risk_level": "YELLOW",
+      "legal_basis": "Luật Cư trú 2020 & Nghị định 144/2021/NĐ-CP",
+      "trigger_condition": "Chủ nhà từ chối cung cấp giấy tờ nhà đất, không phối hợp để người thuê làm thủ tục đăng ký tạm trú với Công an, hoặc tự đặt ra mức thu phí 'hỗ trợ tạm trú' bất hợp pháp.",
+      "explanation": "Theo Luật Cư trú 2020, công dân sinh sống ngoài nơi thường trú từ 30 ngày trở lên bắt buộc phải đăng ký tạm trú. Pháp luật nghiêm cấm hành vi chủ nhà cản trở, trốn tránh trách nhiệm cung cấp giấy tờ pháp lý để người thuê đăng ký cư trú hợp pháp.",
+      "suggested_clause": "Bên A có nghĩa vụ cung cấp đầy đủ thông tin, giấy tờ chứng minh chỗ ở hợp pháp và phối hợp cùng Bên B thực hiện thủ tục đăng ký tạm trú với cơ quan Công an có thẩm quyền theo đúng quy định của Luật Cư trú 2020, không thu thêm bất kỳ khoản phí dịch vụ nào.",
+      "keywords": [
+        "không hỗ trợ đăng ký tạm trú",
+        "phí làm tạm trú",
+        "tự lo tạm trú",
+        "không cung cấp giấy tờ nhà"
+      ],
+      "statutory_citation": "Luật Cư trú 2020",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=144671"
+    },
+    {
+      "rule_id": "RULE_EXTENDED_DEPOSIT_REFUND_DELAY",
+      "rule_name": "Trì hoãn thời hạn hoàn trả tiền cọc quá lâu (> 15 ngày sau khi bàn giao)",
+      "category": "Đặt cọc & Hoàn cọc",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 328 & Điều 479 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định hoàn trả tiền cọc sau 30 ngày, 45 ngày hoặc thời gian mập mờ sau khi bên thuê đã trả phòng.",
+      "explanation": "Theo Điều 328 BLDS, khi hợp đồng chấm dứt nghĩa vụ, tài sản cọc phải được hoàn trả. Kéo dài thời gian hoàn cọc trên 15 ngày làm gia tăng rủi ro chủ nhà cố tình viện cớ trừ tiền hoặc chiếm dụng vốn của người thuê.",
+      "suggested_clause": "Bên A có nghĩa vụ thanh toán hoàn trả toàn bộ số tiền đặt cọc (sau khi trừ các chi phí dịch vụ điện nước chưa thanh toán theo biên bản chốt số) cho Bên B ngay trong ngày bàn giao phòng hoặc tối đa không quá 03 ngày làm việc.",
+      "keywords": [
+        "trả cọc sau 30 ngày",
+        "hoàn cọc sau 45 ngày",
+        "hoàn cọc sau khi kiểm tra xong"
+      ],
+      "statutory_citation": "Điều 328",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_EXCESSIVE_DEPOSIT",
+      "rule_name": "Yêu cầu tiền đặt cọc quá cao (> 2 tháng tiền thuê đối với nhà trọ)",
+      "category": "Đặt cọc & Hoàn cọc",
+      "risk_level": "YELLOW",
+      "legal_basis": "Tập quán thương mại thuê nhà ở đô thị & Điều 328 Bộ luật Dân sự 2015",
+      "trigger_condition": "Số tiền đặt cọc yêu cầu vượt quá 02 tháng tiền thuê nhà đối với hợp đồng thuê ngắn hạn hoặc nhà trọ phân khúc phổ thông.",
+      "explanation": "Đặt cọc quá nhiều làm tăng rủi ro mất mát tài chính lớn cho người thuê nhà khi phát sinh tranh chấp hoặc chủ nhà gây khó dễ khi trả phòng.",
+      "suggested_clause": "Số tiền đặt cọc tương đương 01 tháng tiền thuê (tối đa không quá 02 tháng đối với nhà có nội thất cao cấp). Tiền cọc được bảo lưu nguyên vẹn để bảo đảm hợp đồng.",
+      "keywords": [
+        "cọc 3 tháng",
+        "cọc 4 tháng",
+        "cọc 6 tháng"
+      ],
+      "statutory_citation": "Tập quán thương mại thuê nhà ở đô thị",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_VAGUE_DEDUCTION_FEES",
+      "rule_name": "Khấu trừ phí vệ sinh, sơn sửa mập mờ không có định lượng",
+      "category": "Bàn giao & Hiện trạng",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 479 & Điều 482 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định Bên A được quyền tự ý trừ tiền cọc để sơn lại toàn bộ phòng, vệ sinh công nghiệp khi trả phòng mà không có hóa đơn chứng từ cụ thể.",
+      "explanation": "Bẫy trừ tiền hoàn cọc rất phổ biến: chủ nhà bắt người thuê phải trả tiền sơn mới lại toàn bộ phòng dù nhà chỉ bị hao mòn bình thường theo thời gian sử dụng.",
+      "suggested_clause": "Khi trả phòng, Bên B có nghĩa vụ dọn dẹp sạch sẽ cơ bản như hiện trạng ban đầu. Không bên nào phải chịu phí sơn sửa lại tường nếu đó là vết ố mờ hao mòn tự nhiên sau thời gian sử dụng. Các khoản khấu trừ (nếu có) phải căn cứ theo hóa đơn dịch vụ thực tế hợp lý có sự xác nhận của hai bên.",
+      "keywords": [
+        "phí vệ sinh công nghiệp",
+        "phí sơn lại nhà",
+        "tự trừ tiền cọc để sửa",
+        "khấu trừ chi phí dọn dẹp"
+      ],
+      "statutory_citation": "Điều 479",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_FORCE_MAJEURE_EXCLUSION",
+      "rule_name": "Không miễn trừ trách nhiệm khi xảy ra sự kiện bất khả kháng",
+      "category": "Chấm dứt Hợp đồng",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 156 & Điều 351 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng không có điều khoản sự kiện bất khả kháng hoặc quy định bên thuê vẫn phải chịu đủ tiền thuê dù tài sản bị thiên tai, hỏa hoạn, dịch bệnh phong tỏa không thể ở được.",
+      "explanation": "Nếu xảy ra dịch bệnh, phong tỏa, sụt lún nguy hiểm không do lỗi người thuê, hợp đồng cần cơ chế tạm dừng hoặc giảm tiền thuê hợp lý.",
+      "suggested_clause": "Trong trường hợp xảy ra sự kiện bất khả kháng (thiên tai, dịch bệnh bị cách ly diện rộng, nhà bị thu hồi giải tỏa hoặc hư hỏng nặng do động đất/sụt lún) khiến Bên B không thể tiếp tục ở, hai bên có quyền chấm dứt hợp đồng mà không phải bồi thường; Bên A hoàn trả lại 100% tiền cọc cho Bên B.",
+      "keywords": [
+        "bất khả kháng",
+        "thiên tai hỏa hoạn vẫn phải trả tiền",
+        "không chịu trách nhiệm bất khả kháng"
+      ],
+      "statutory_citation": "Điều 156",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_NO_INVENTORY_HANDOVER",
+      "rule_name": "Thiếu biên bản bàn giao kiểm kê hiện trạng tài sản ban đầu",
+      "category": "Bàn giao & Hiện trạng",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 474 & Điều 479 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng ghi nhận chung chung là 'nhà ở trong tình trạng hoàn hảo' mà không kèm phụ lục biên bản bàn giao danh mục tài sản và tình trạng hoạt động cụ thể.",
+      "explanation": "Khi trả phòng, chủ nhà dễ vin vào các vết nứt, vết ố, thiết bị cũ có từ trước để bắt người thuê bồi thường mới.",
+      "suggested_clause": "Hai bên cam kết lập 'Biên bản bàn giao và hiện trạng tài sản' đính kèm hình ảnh/video thực tế tại thời điểm giao phòng. Biên bản này là căn cứ duy nhất để đối chiếu tình trạng tài sản khi kết thúc hợp đồng.",
+      "keywords": [
+        "nhận nhà hoàn hảo",
+        "nhận nhà đầy đủ tiện nghi",
+        "không có biên bản bàn giao"
+      ],
+      "statutory_citation": "Điều 474",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_RESTRICTIVE_VISITOR_POLICY",
+      "rule_name": "Hạn chế vô lý hoặc phụ thu phí bất thường khi có người thân/bạn bè ghé thăm",
+      "category": "Quyền riêng tư & Sử dụng",
+      "risk_level": "GREEN",
+      "legal_basis": "Quyền sử dụng tài sản hợp pháp & Tập quán sinh hoạt",
+      "trigger_condition": "Hợp đồng cấm hoàn toàn bạn bè, người thân vào phòng hoặc đặt ra mức phí phạt/phụ thu vô lý khi có khách đến chơi ban ngày.",
+      "explanation": "Quy định quá khắt khe gây ức chế cho sinh hoạt đời thường của người thuê. Chỉ nên quản lý việc ở lại qua đêm để đảm bảo an ninh và đăng ký tạm trú.",
+      "suggested_clause": "Bên B có quyền đón tiếp người thân, bạn bè đến thăm trong khung giờ từ 07:00 đến 22:00 mà không phải trả thêm phụ phí. Trường hợp khách ở lại qua đêm, Bên B cần thông báo trước cho Bên A để thực hiện khai báo tạm trú theo quy định công an.",
+      "keywords": [
+        "cấm dẫn người lạ vào",
+        "phạt tiền khi có khách",
+        "phụ thu khách đến chơi"
+      ],
+      "statutory_citation": "Quyền sử dụng tài sản hợp pháp",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_ARBITRARY_UTILITY_PRICE_INCREASE",
+      "rule_name": "Chủ nhà có quyền tự ý tăng giá các khoản phí dịch vụ chung",
+      "category": "Chi phí & Phụ phí",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 170 Luật Nhà ở 2023",
+      "trigger_condition": "Quy định phí quản lý, phí gửi xe, phí internet, thang máy có thể tăng bất kỳ lúc nào theo thông báo của chủ nhà.",
+      "explanation": "Chủ nhà có thể giữ giá thuê không đổi nhưng liên tục tăng các loại phí dịch vụ ngầm để tăng tổng số tiền thu của người thuê.",
+      "suggested_clause": "Các khoản chi phí dịch vụ (phí gửi xe, vệ sinh chung, internet) được giữ cố định theo mức đã thỏa thuận tại hợp đồng trong suốt thời gian thuê.",
+      "keywords": [
+        "phí dịch vụ có thể thay đổi",
+        "tự điều chỉnh phí quản lý",
+        "tăng phí gửi xe"
+      ],
+      "statutory_citation": "Điều 170 Luật Nhà ở 2023",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=163273"
+    },
+    {
+      "rule_id": "RULE_DISCLOSURE_LEGAL_STATUS",
+      "rule_name": "Che giấu thông tin pháp lý, thế chấp, quy hoạch của bất động sản cho thuê",
+      "category": "Thông tin & Điều kiện Nhà ở",
+      "risk_level": "",
+      "legal_basis": "Điều 6 Nghị định 96/2024/NĐ-CP & Điều 160 Luật Nhà ở 2023",
+      "trigger_condition": "Bên cho thuê che giấu hoặc không công khai thông tin về việc nhà ở đang bị thế chấp ngân hàng, nhà xây dựng sai phép, nằm trong diện quy hoạch giải tỏa hoặc đang có tranh chấp quyền sở hữu.",
+      "explanation": "Theo Điều 6 Nghị định 96/2024/NĐ-CP và Điều 160 Luật Nhà ở 2023, bên cho thuê nhà ở có nghĩa vụ công khai trung thực tình trạng pháp lý, quyền sở hữu và các hạn chế quyền sử dụng của bất động sản trước khi giao kết hợp đồng. Việc che giấu rủi ro quy hoạch/thế chấp gây nguy cơ người thuê bị mất chỗ ở đột ngột.",
+      "suggested_clause": "Bên A cam kết nhà ở cho thuê có đầy đủ giấy tờ hợp pháp, không bị tranh chấp, không bị kê biên và không nằm trong diện đã có quyết định thu hồi đất. Nếu phát sinh tranh chấp hoặc quyết định giải tỏa khiến Bên B không thể tiếp tục thuê, Bên A phải hoàn trả 100% tiền cọc, toàn bộ tiền thuê đã trả trước cho thời gian chưa ở và bồi thường thiệt hại thực tế phát sinh.",
+      "keywords": [
+        "nhà đang thế chấp",
+        "quy hoạch giải tỏa",
+        "sai phép xây dựng",
+        "tranh chấp quyền sở hữu",
+        "thu hồi đất"
+      ],
+      "statutory_citation": "Điều 6 Nghị định 96/2024/NĐ-CP",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=168051"
+    },
+    {
+      "rule_id": "RULE_FIRE_SAFETY_WARRANTY",
+      "rule_name": "Miễn trừ trách nhiệm về an toàn kết cấu và phòng cháy chữa cháy (PCCC)",
+      "category": "An toàn & Chất lượng Công trình",
+      "risk_level": "",
+      "legal_basis": "Điều 160 Luật Nhà ở 2023, Điều 477 & Điều 584 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định Bên A được miễn trừ trách nhiệm bồi thường khi căn nhà xảy ra sự cố chập điện, hỏa hoạn do lỗi kỹ thuật công trình hoặc do nhà ở không đáp ứng các tiêu chuẩn an toàn PCCC.",
+      "explanation": "Điều 160 Luật Nhà ở 2023 quy định nhà ở tham gia giao dịch cho thuê phải bảo đảm chất lượng, an toàn cho tính mạng, tài sản của người thuê và tuân thủ quy chuẩn về PCCC. Thỏa thuận miễn trừ trách nhiệm đối với thiệt hại do lỗi kỹ thuật của chính tài sản cho thuê là trái với Điều 477 và 584 BLDS 2015.",
+      "suggested_clause": "Bên A có trách nhiệm bảo đảm nhà ở đáp ứng đầy đủ các tiêu chuẩn an toàn kỹ thuật về điện, nước và phòng cháy chữa cháy theo quy định pháp luật. Trường hợp xảy ra sự cố hư hỏng, chập cháy do lỗi kỹ thuật của hệ thống điện nước âm tường hoặc lỗi kết cấu công trình của Bên A, Bên A chịu trách nhiệm bồi thường toàn bộ thiệt hại thực tế cho Bên B.",
+      "keywords": [
+        "miễn trừ trách nhiệm cháy nổ",
+        "chập điện tự chịu",
+        "lỗi kỹ thuật không bồi thường",
+        "không bảo đảm PCCC"
+      ],
+      "statutory_citation": "Điều 160 Luật Nhà ở 2023, Điều 477",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_ASYMMETRIC_HANDOVER_DELAY",
+      "rule_name": "Miễn trừ trách nhiệm khi chủ nhà chậm bàn giao nhà nhưng phạt nặng bên thuê",
+      "category": "Bàn giao & Thời hạn",
+      "risk_level": "",
+      "legal_basis": "Mẫu số 04 Phụ lục Nghị định 96/2024/NĐ-CP & Điều 3 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định Bên A chậm bàn giao nhà không phải chịu chế tài bồi thường, trong khi Bên B nhận nhà trễ quá vài ngày thì bị phạt hủy hợp đồng và tịch thu toàn bộ tiền cọc.",
+      "explanation": "Trái với nguyên tắc bình đẳng và thiện chí trong giao dịch dân sự (Điều 3 BLDS 2015) và mẫu hợp đồng thuê nhà theo Mẫu số 04 Nghị định 96/2024/NĐ-CP. Thỏa thuận này tạo ra sự bất bình đẳng cực đoan, tước bỏ quyền lợi chính đáng của người thuê khi không được nhận nhà đúng hạn.",
+      "suggested_clause": "Bên A có nghĩa vụ bàn giao nhà ở đúng thời hạn quy định tại Điều 4. Trường hợp Bên A chậm bàn giao quá 05 ngày mà không có lý do bất khả kháng, Bên A phải chịu phạt bằng 0,05%/ngày tính trên số tiền đặt cọc cho mỗi ngày chậm bàn giao và Bên B có quyền đơn phương chấm dứt hợp đồng, nhận lại 100% tiền cọc.",
+      "keywords": [
+        "chậm bàn giao không bồi thường",
+        "miễn trừ chậm giao nhà",
+        "nhận nhà trễ bị phạt"
+      ],
+      "statutory_citation": "Mẫu số 04 Phụ lục Nghị định 96/2024/NĐ-CP",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=168051"
+    },
+    {
+      "rule_id": "RULE_WAIVER_OF_LEGAL_REMEDIES",
+      "rule_name": "Tước đoạt quyền tiếp cận công lý, cấm khiếu nại hoặc khởi kiện ra Tòa án",
+      "category": "Giải quyết Tranh chấp",
+      "risk_level": "",
+      "legal_basis": "Điều 11 & Điều 123 Bộ luật Dân sự 2015, Mẫu 04 Nghị định 96/2024/NĐ-CP",
+      "trigger_condition": "Hợp đồng quy định mọi tranh chấp do Bên A đơn phương quyết định và là phán quyết cuối cùng; Bên B cam kết tự nguyện từ bỏ quyền khiếu nại cơ quan chức năng hoặc khởi kiện ra Tòa án.",
+      "explanation": "Điều khoản bị vô hiệu tuyệt đối theo Điều 123 và Điều 11 BLDS 2015 cùng Bộ luật Tố tụng Dân sự 2015. Quyền yêu cầu Tòa án bảo vệ quyền và lợi ích hợp pháp là quyền hiến định của công dân, không thể bị tước bỏ bằng bất kỳ thỏa thuận dân sự nào.",
+      "suggested_clause": "Trong quá trình thực hiện hợp đồng, nếu phát sinh tranh chấp, hai bên cùng nhau thương lượng trên tinh thần thiện chí và bình đẳng. Trường hợp không tự thỏa thuận được, một trong hai bên có quyền yêu cầu Tòa án nhân dân có thẩm quyền giải quyết theo đúng quy định của pháp luật tố tụng.",
+      "keywords": [
+        "từ bỏ quyền khiếu nại",
+        "từ bỏ quyền khởi kiện",
+        "phán quyết của chủ nhà là cuối cùng",
+        "không được kiện ra tòa"
+      ],
+      "statutory_citation": "Điều 11",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=168051"
+    },
+    {
+      "rule_id": "RULE_UNILATERAL_DAMAGE_ASSESSMENT",
+      "rule_name": "Tự quyền định đoạt mức bồi thường thiệt hại và khấu trừ cọc không theo chứng từ thực tế",
+      "category": "Đặt cọc & Bồi thường",
+      "risk_level": "",
+      "legal_basis": "Điều 360 & Điều 419 Bộ luật Dân sự 2015, Nghị định 96/2024/NĐ-CP",
+      "trigger_condition": "Hợp đồng cho phép Bên A tự quyền định giá mức thiệt hại và tự động khấu trừ tiền cọc theo biểu phí nội bộ của Bên A mà không cần cung cấp hóa đơn, chứng từ chi phí thực tế.",
+      "explanation": "Theo Điều 360 và Điều 419 BLDS 2015, trách nhiệm bồi thường chỉ phát sinh đối với thiệt hại thực tế, trực tiếp. Việc chủ nhà tự ấn định mức phạt thiệt hại mà không có hóa đơn chứng từ khách quan là hành vi lạm quyền nhằm chiếm đoạt tiền đặt cọc.",
+      "suggested_clause": "Mọi khoản khấu trừ tiền cọc để sửa chữa hư hỏng (nếu có) phải căn cứ trên thiệt hại thực tế phát sinh, có báo giá và hóa đơn dịch vụ hợp pháp, đồng thời phải được hai bên cùng kiểm tra và thống nhất trong biên bản thanh lý hợp đồng.",
+      "keywords": [
+        "tự quyền trừ tiền cọc",
+        "biểu phí nội bộ chủ nhà",
+        "khấu trừ không cần hóa đơn",
+        "tự định giá hư hỏng"
+      ],
+      "statutory_citation": "Điều 360",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=168051"
+    },
+    {
+      "rule_id": "RULE_TENANT_UNAUTHORIZED_STRUCTURAL_ALTERATION",
+      "rule_name": "Bên thuê tự ý đập phá vách ngăn, thay đổi kết cấu chịu lực của công trình nhà ở",
+      "category": "Sử dụng & Cải tạo Nhà ở",
+      "risk_level": "",
+      "legal_basis": "Điều 174 Luật Nhà ở 2023 & Điều 479 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng cho phép hoặc bên thuê tự ý đập phá vách ngăn, tháo dỡ tường chịu lực, cơi nới diện tích công trình nhà ở mà không có sự đồng ý bằng văn bản của chủ sở hữu và cơ quan quản lý xây dựng.",
+      "explanation": "Trái với Điều 174 Luật Nhà ở 2023 và Điều 479 BLDS 2015. Bên thuê chỉ được tu sửa, cải tạo nhà ở khi có sự đồng ý bằng văn bản của chủ sở hữu và phải tuân thủ nghiêm ngặt quy định pháp luật về xây dựng nhằm bảo đảm an toàn kết cấu công trình.",
+      "suggested_clause": "Bên B có nghĩa vụ giữ gìn nguyên trạng kết cấu nhà ở; tuyệt đối không được tự ý đập phá, tháo dỡ tường ngăn hoặc thay đổi kết cấu chịu lực của căn nhà nếu chưa có văn bản chấp thuận của Bên A và giấy phép của cơ quan có thẩm quyền (nếu có).",
+      "keywords": [
+        "tự ý đập phá vách ngăn",
+        "thay đổi kết cấu chịu lực",
+        "tự do cơi nới phòng",
+        "đập tường không cần xin phép"
+      ],
+      "statutory_citation": "Điều 174 Luật Nhà ở 2023",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_AUTOMATIC_RENEWAL_PRICE_HIKE",
+      "rule_name": "Cài bẫy tự động gia hạn hợp đồng kèm áp đặt tăng giá thuê phi lý",
+      "category": "Thời hạn & Gia hạn Hợp đồng",
+      "risk_level": "",
+      "legal_basis": "Điều 170 Luật Nhà ở 2023 & Điều 401 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng quy định khi hết hạn thuê, nếu bên thuê không thông báo trước 60 ngày thì hợp đồng đương nhiên tự động gia hạn thêm 01 năm với giá thuê tăng thêm 20-30% mà không cần hai bên ký kết lại.",
+      "explanation": "Trái với nguyên tắc tự do thỏa thuận và tự nguyện cam kết tại Điều 3 và Điều 401 BLDS 2015. Việc gia hạn hợp đồng và điều chỉnh giá thuê nhà ở phải dựa trên sự đồng thuận rõ ràng của các bên tại thời điểm hết hạn theo Điều 170 Luật Nhà ở 2023.",
+      "suggested_clause": "Khi hết hạn hợp đồng, nếu Bên B có nhu cầu tiếp tục thuê thì phải thông báo trước cho Bên A tối thiểu 30 ngày. Việc gia hạn thời hạn thuê và điều chỉnh giá thuê (nếu có) phải được hai bên cùng thỏa thuận và ký kết phụ lục hợp đồng bằng văn bản.",
+      "keywords": [
+        "tự động gia hạn kèm tăng giá",
+        "tự động gia hạn thêm 1 năm",
+        "không báo trước 60 ngày bị gia hạn"
+      ],
+      "statutory_citation": "Điều 170 Luật Nhà ở 2023",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=96420"
+    },
+    {
+      "rule_id": "RULE_RESTRICTION_FREE_SPEECH",
+      "rule_name": "Cấm người thuê phản ánh chất lượng cơ sở vật chất, review lên mạng xã hội",
+      "category": "Quyền tự do & Chế tài",
+      "risk_level": "",
+      "legal_basis": "Điều 25 Hiến pháp 2013 & Nguyên tắc thiện chí Điều 3 Bộ luật Dân sự 2015",
+      "trigger_condition": "Hợp đồng cấm người thuê đăng tải phản ánh, hình ảnh hoặc nhận xét về tình trạng xuống cấp của căn nhà lên mạng xã hội, nếu vi phạm bị phạt tiền hoặc tịch thu toàn bộ tiền đặt cọc.",
+      "explanation": "Trái với quyền tự do ngôn luận tại Điều 25 Hiến pháp 2013 và nguyên tắc thiện chí trong hợp đồng. Người thuê có quyền phản ánh đúng sự thật về chất lượng dịch vụ; chủ nhà không được dùng chế tài tịch thu tiền cọc để ngăn chặn phản hồi chính đáng của khách hàng.",
+      "suggested_clause": "Người thuê có quyền phản ánh trung thực về tình trạng cơ sở vật chất và dịch vụ. Hai bên cam kết tiếp nhận và giải quyết các khiếu nại, phản ánh trên tinh thần hợp tác, tôn trọng quyền lợi của nhau.",
+      "keywords": [
+        "cấm đăng lên mạng xã hội",
+        "cấm review tiêu cực",
+        "phạt tiền khi phản ánh chất lượng",
+        "tịch thu cọc khi đăng bài"
+      ],
+      "statutory_citation": "Điều 25 Hiến pháp 2013",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=32801"
+    }
+  ]
+}

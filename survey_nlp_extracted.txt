@@ -1,0 +1,85 @@
+Đề tài: Ứng dụng hệ thống Multi-Agent trong việc rà soát, phát hiện rủi ro và đề xuất điều khoản hợp đồng thuê nhà.
+
+1. Đặt vấn đề & Bối cảnh (Context)
+
+Thị trường cho thuê nhà ở đô thị hiện nay rất sôi động nhưng thiếu tính minh bạch về mặt pháp lý đối với người đi thuê (phần lớn là sinh viên, người lao động trẻ, người nhập cư). Các hợp đồng thuê nhà thường do bên cho thuê (chủ nhà/môi giới) soạn thảo sẵn theo hướng có lợi cho họ, sử dụng câu chữ phức tạp, lắt léo hoặc mập mờ.
+
+Người đi thuê thường gặp khó khăn do:
+
+Thiếu kiến thức pháp lý chuyên sâu về Luật Nhà ở và Bộ luật Dân sự.
+
+Không có thời gian đọc kỹ từng câu chữ trong các hợp đồng dài từ 3–5 trang.
+
+Dễ bỏ qua các "bẫy" ngầm dẫn đến mất tiền cọc oan uổng hoặc bị tăng giá bất thường.
+
+2. Phân tích Điểm đau (Pain Points)
+
+Các bên liên quan (đặc biệt là người thuê nhà) đang phải đối mặt với các vấn đề cốt lõi sau:
+
+Pain Point 1: Thông tin bất đối xứng (Information Asymmetry): Chủ nhà nắm rõ các rủi ro pháp lý hoặc điều khoản gài bẫy, trong khi người thuê xem hợp đồng lần đầu và dễ bị áp lực ký nhanh.
+
+Pain Point 2: Khó nhận diện rủi ro ẩn (Hidden Risks): Các điều khoản phạt vi phạm hợp đồng quá cao, điều kiện đơn phương chấm dứt hợp đồng vô lý, hoặc quy định mập mờ về chi phí sửa chữa hư hỏng tài sản lớn thường bị ngụy trang khéo léo.
+
+Pain Point 3: Hạn chế về thời gian và công cụ tư vấn: Thuê luật sư tư vấn hợp đồng thuê nhà là không khả thi về mặt chi phí và thời gian đối với một giao dịch nhỏ lẻ. Các công cụ kiểm tra văn bản thông thường chỉ bắt lỗi chính tả, không hiểu ngữ nghĩa pháp lý sâu.
+
+3. Khảo sát Dữ liệu (Data Assessment)
+
+Để giải quyết bài toán bằng Machine Learning / LLM, đặc thù dữ liệu yêu cầu như sau:
+
+Loại dữ liệu (Data Type): Văn bản phi cấu trúc (Unstructured Text) định dạng PDF, DOCX (Hợp đồng thuê nhà thực tế).
+
+Quy mô dữ liệu đề xuất cho Đồ án:
+
+Tập dữ liệu mẫu: 15–20 văn bản hợp đồng đa dạng nguồn (Hợp đồng chuẩn từ các bên môi giới uy tín, hợp đồng trọn gói sinh viên, và hợp đồng có cài cắm rủi ro nhân tạo).
+
+Knowledge Base (Cơ sở tri thức bổ trợ): Danh sách chuẩn hóa các quy định pháp luật cốt lõi (Quy định về tiền cọc tối đa, thời hạn thông báo trả phòng, điều kiện hoàn cọc) để làm căn cứ cho Agent đối chiếu.
+
+Thách thức dữ liệu: Định dạng file PDF quét (scan ảnh) có thể gây khó khăn cho việc trích xuất văn bản; ngôn ngữ pháp lý lằng nhằng, nhiều cách diễn đạt khác nhau cho cùng một ý nghĩa (ví dụ: "tiền thế chân", "tiền đặt cọc", "tiền bảo đảm").
+
+4. Phạm vi bài toán (Scope)
+
+Để đảm bảo tính khả thi trong thời gian ngắn (5 tuần) và nguồn lực 1 người, phạm vi đề tài được định nghĩa rõ ràng như sau:
+
+Phạm vi trong tầm tay (In-scope):
+
+Xây dựng hệ thống 3 Agent phối hợp tự động (Extractor, Risk Analyzer, Proposal Agent).
+
+Xử lý đầu vào là file PDF/DOCX hợp đồng thuê nhà tiếng Việt.
+
+Trích xuất các trường thông tin quan trọng (Giá thuê, tiền cọc, thời hạn, điều khoản chấm dứt).
+
+Phát hiện và phân loại mức độ rủi ro (Cao - Đỏ, Trung bình - Vàng, Thấp - Xanh) dựa trên tiêu chí pháp lý định sẵn.
+
+Đề xuất câu chữ sửa đổi (Redline suggestions) tối ưu hơn cho người thuê.
+
+Giao diện web demo cơ bản tích hợp qua Streamlit.
+
+Phạm vi ngoài tầm tay (Out-of-scope):
+
+Không tích hợp ký số hợp đồng pháp lý thực tế (e-signature).
+
+Không tư vấn các loại hợp đồng phức tạp khác (như hợp đồng thuê mặt bằng thương mại lớn, hợp đồng mua bán bất động sản).
+
+Không xây dựng hệ thống tự động đàm phán trực tiếp với chủ nhà qua chat/email.
+
+5. Định nghĩa Sản phẩm tối thiểu khả thi (MVP - Minimum Viable Product)
+
+MVP của hệ thống sẽ tập trung vào một luồng khép kín (End-to-End User Journey) cực kỳ sắc bén:
+
+Upload: Người dùng tải file hợp đồng thuê nhà (.pdf hoặc .docx) lên giao diện web Streamlit.
+
+Multi-Agent Execution:
+
+Agent 1 đọc và trích xuất thông tin tóm tắt thành dạng cấu trúc JSON sạch sẽ.
+
+Agent 2 quét toàn bộ nội dung, đối chiếu với bộ quy tắc rủi ro và trả về danh sách các "điểm đỏ" (red flags) kèm giải thích lý do tại sao rủi ro.
+
+Agent 3 soạn thảo sẵn các câu văn thay thế (đề xuất đàm phán lại) có lợi và cân bằng hơn cho người thuê.
+
+Dashboard Result: Hiển thị kết quả trực quan trên màn hình gồm:
+
+Thẻ tóm tắt thông tin hợp đồng chính.
+
+Bảng cảnh báo rủi ro chi tiết kèm đề xuất sửa đổi.
+
+Nút tải xuống báo cáo tổng hợp dạng Markdown/PDF.
