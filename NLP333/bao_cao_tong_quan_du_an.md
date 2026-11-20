@@ -124,11 +124,8 @@ Nhóm đã xây dựng kịch bản kiểm thử độc lập `evaluate_benchmar
 
 ## 5. TỔNG KẾT & ĐÓNG GÓP CỦA ĐỒ ÁN
 
-1. **Khắc phục hoàn toàn nhận xét "sơ sài":**
-   - Đã nâng cấp bài toán từ một ứng dụng gọi API đơn giản thành **quy trình nghiên cứu NLP hoàn chỉnh**, có mô hình hóa bài toán học thuật (Legal NLI, Information Extraction), có cơ sở dữ liệu luật đóng kín và cơ chế Hybrid RAG.
-2. **Khắc phục nhận xét "chưa đủ rộng":**
-   - Mở rộng thành công sang lĩnh vực **Hợp đồng Lao động & Thử việc** - một vấn đề cực kỳ nhức nhối đối với sinh viên và người trẻ tuổi.
+1. - Đã nâng cấp bài toán từ một ứng dụng gọi API đơn giản thành **quy trình nghiên cứu NLP hoàn chỉnh**, có mô hình hóa bài toán học thuật (Legal NLI, Information Extraction), có cơ sở dữ liệu luật đóng kín và cơ chế Hybrid RAG.
+2. - Mở rộng thành công sang lĩnh vực **Hợp đồng Lao động & Thử việc** - một vấn đề cực kỳ nhức nhối đối với sinh viên và người trẻ tuổi.
    - Bổ sung tính năng **Đa góc nhìn đàm phán (Bên A / Bên B / Trung lập)** giúp hệ thống có thể ứng dụng trong thực tế cho cả cá nhân lẫn doanh nghiệp.
-3. **Khắc phục nhận xét "chưa đủ sâu":**
-   - Cung cấp module tra cứu điều luật trực tiếp (Legal Inspector) kèm link CSDL Quốc gia `vbpl.vn`.
+3. - Cung cấp module tra cứu điều luật trực tiếp (Legal Inspector) kèm link CSDL Quốc gia `vbpl.vn`.
    - Có kịch bản kiểm thử tự động `evaluate_benchmark.py` cung cấp đầy đủ các chỉ số định lượng phục vụ báo cáo bảo vệ đồ án.
