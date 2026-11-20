@@ -1,0 +1,272 @@
+{
+  "version": "1.0",
+  "contract_type": "employment",
+  "description": "Bộ quy tắc rà soát rủi ro pháp lý & thương mại cho Hợp đồng Lao động, Thử việc & Cam kết Bảo mật theo Bộ luật Lao động 2019 (Luật số 45/2019/QH14), Hiến pháp 2013 và Nghị định 12/2022/NĐ-CP",
+  "total_rules": 14,
+  "rules": [
+    {
+      "rule_id": "RULE_LABOR_RETAIN_PAPERS",
+      "rule_name": "Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động",
+      "category": "Quyền nhân thân & Hồ sơ",
+      "risk_level": "RED",
+      "legal_basis": "Khoản 1 Điều 17 Bộ luật Lao động 2019 & Điều 9 Nghị định 12/2022/NĐ-CP",
+      "trigger_condition": "Hợp đồng hoặc phụ lục quy định người lao động phải nộp lại bản gốc CCCD/CMND, bằng tốt nghiệp đại học, chứng chỉ chuyên môn cho người sử dụng lao động cất giữ trong suốt thời gian làm việc.",
+      "explanation": "Khoản 1 Điều 17 BLLĐ 2019 nghiêm cấm người sử dụng lao động giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động. Hành vi này có thể bị phạt tiền từ 20 đến 25 triệu đồng theo Nghị định 12/2022/NĐ-CP.",
+      "suggested_clause": "Người lao động chỉ có nghĩa vụ cung cấp bản sao có chứng thực (hoặc xuất trình bản chính để đối chiếu và nhận lại ngay) các văn bằng, chứng chỉ và giấy tờ tùy thân theo yêu cầu tuyển dụng.",
+      "keywords": [
+        "giữ bản chính",
+        "nộp bằng gốc",
+        "giữ CCCD",
+        "giữ bằng tốt nghiệp",
+        "lưu giữ bản gốc",
+        "tạm giữ giấy tờ"
+      ],
+      "statutory_citation": "Khoản 1 Điều 17 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_DEPOSIT_MONEY",
+      "rule_name": "Yêu cầu người lao động đặt cọc tiền hoặc tài sản bảo đảm",
+      "category": "Tài chính & Đặt cọc",
+      "risk_level": "RED",
+      "legal_basis": "Khoản 2 Điều 17 Bộ luật Lao động 2019 & Điều 9 Nghị định 12/2022/NĐ-CP",
+      "trigger_condition": "Hợp đồng quy định người lao động phải nộp một khoản tiền cọc (thế chân, bảo đảm trách nhiệm, giữ vị trí) hoặc cầm cố tài sản trước hoặc trong khi làm việc.",
+      "explanation": "Khoản 2 Điều 17 BLLĐ 2019 nghiêm cấm hành vi yêu cầu người lao động phải thực hiện biện pháp bảo đảm bằng tiền hoặc tài sản khác cho việc thực hiện hợp đồng lao động.",
+      "suggested_clause": "Người sử dụng lao động không thu bất kỳ khoản tiền đặt cọc, thế chân hay phí bảo đảm nào từ người lao động dưới mọi hình thức.",
+      "keywords": [
+        "đặt cọc tiền",
+        "tiền thế chân",
+        "tiền bảo đảm hợp đồng",
+        "ký quỹ",
+        "đóng tiền cọc"
+      ],
+      "statutory_citation": "Khoản 2 Điều 17 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_PROBATION_SALARY_UNDER_85",
+      "rule_name": "Tiền lương trong thời gian thử việc thấp hơn 85% lương chính thức",
+      "category": "Tiền lương & Thử việc",
+      "risk_level": "RED",
+      "legal_basis": "Điều 26 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng thử việc hoặc điều khoản thử việc quy định mức lương thử việc dưới 85% mức lương của công việc đó (ví dụ: áp dụng 60%, 70% hoặc 80%).",
+      "explanation": "Điều 26 BLLĐ 2019 quy định tiền lương của người lao động trong thời gian thử việc do hai bên thỏa thuận nhưng ít nhất phải bằng 85% mức lương của công việc đó.",
+      "suggested_clause": "Trong thời gian thử việc, Người lao động được hưởng 85% (hoặc 100%) mức lương chính thức của vị trí công việc đảm nhận.",
+      "keywords": [
+        "70% lương",
+        "80% lương",
+        "hưởng 75%",
+        "thử việc 70%",
+        "lương thử việc 60%"
+      ],
+      "statutory_citation": "Điều 26 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_PROBATION_EXCESSIVE_DURATION",
+      "rule_name": "Thời gian thử việc vượt quá giới hạn tối đa luật định",
+      "category": "Tiền lương & Thử việc",
+      "risk_level": "RED",
+      "legal_basis": "Điều 25 Bộ luật Lao động 2019",
+      "trigger_condition": "Thời gian thử việc quy định vượt quá: 180 ngày (với người quản lý), 60 ngày (với vị trí chuyên môn, kỹ thuật đại học/cao đẳng), 30 ngày (với trung cấp/công nhân), hoặc 06 ngày làm việc (với công việc giản đơn).",
+      "explanation": "Điều 25 BLLĐ 2019 khống chế thời gian thử việc tối đa tùy theo trình độ chuyên môn kỹ thuật. Thỏa thuận thử việc kéo dài (ví dụ: 3 tháng hoặc 6 tháng cho nhân viên văn phòng) là vi phạm luật cấm.",
+      "suggested_clause": "Thời gian thử việc là 60 ngày (hoặc 30 ngày tùy theo tính chất công việc) kể từ ngày bắt đầu làm việc theo đúng quy định tại Điều 25 Bộ luật Lao động 2019.",
+      "keywords": [
+        "thử việc 3 tháng",
+        "thử việc 90 ngày",
+        "thử việc 6 tháng",
+        "kéo dài thời gian thử việc"
+      ],
+      "statutory_citation": "Điều 25 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_NON_COMPETE_OVERBROAD",
+      "rule_name": "Điều khoản cấm làm việc cho đối thủ cạnh tranh quá mức (Non-Compete Overreach)",
+      "category": "Bảo mật & Cạnh tranh",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 35 Hiến pháp 2013 & Điều 10, Khoản 2 Điều 21 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng cấm người lao động sau khi nghỉ việc không được làm việc trong toàn bộ ngành nghề liên quan trên phạm vi toàn quốc hoặc trong thời hạn quá dài (trên 12 tháng) mà không có khoản trợ cấp tài chính bù đắp tương xứng.",
+      "explanation": "Hiến pháp bảo đảm quyền tự do lựa chọn nghề nghiệp, nơi làm việc của công dân. Điều khoản cấm cạnh tranh chỉ hợp pháp khi áp dụng với vị trí tiếp cận bí mật kinh doanh/công nghệ và cần có giới hạn địa lý hợp lý, thời hạn rõ ràng kèm khoản bù đắp tài chính hợp lý.",
+      "suggested_clause": "Người lao động cam kết không tiết lộ bí mật kinh doanh, thông tin khách hàng độc quyền của Công ty cho bên thứ ba. Trường hợp hai bên thỏa thuận hạn chế làm việc cho đối thủ cạnh tranh trực tiếp trong vòng 06 tháng sau khi nghỉ việc, Công ty có trách nhiệm chi trả một khoản bù đắp tài chính hàng tháng tối thiểu bằng 50% mức lương bình quân.",
+      "keywords": [
+        "không được làm việc cho đối thủ",
+        "cấm làm việc trong ngành",
+        "cấm làm cho công ty cùng lĩnh vực",
+        "không làm việc trong 2 năm",
+        "không làm việc trong 3 năm"
+      ],
+      "statutory_citation": "Điều 10 & Khoản 2 Điều 21 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_TRAINING_REIMBURSEMENT_EXCESSIVE",
+      "rule_name": "Phạt bồi hoàn chi phí đào tạo không hợp lý hoặc ép cam kết vô thời hạn",
+      "category": "Đào tạo nghề & Bồi hoàn",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 62 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định người lao động phải bồi hoàn chi phí đào tạo nội bộ thông thường, hoặc bồi hoàn với mức phạt cố định hàng chục/trăm triệu đồng mà không có hóa đơn chứng từ hợp lệ, hoặc thời gian cam kết gắn bó quá dài (trên 3-5 năm).",
+      "explanation": "Theo Điều 62 BLLĐ 2019, chi phí đào tạo chỉ được yêu cầu hoàn trả nếu có hợp đồng đào tạo nghề riêng biệt kèm chứng từ chi trả thực tế hợp lệ (học phí, tiền đi lại do công ty đài thọ), và khoản bồi hoàn phải được giảm trừ dần tương ứng với thời gian đã thực tế cống hiến.",
+      "suggested_clause": "Trường hợp được cử đi đào tạo chuyên môn có cấp chứng chỉ và có Hợp đồng đào tạo riêng, nếu Người lao động đơn phương chấm dứt hợp đồng trái pháp luật, Người lao động bồi hoàn chi phí đào tạo thực tế có hóa đơn chứng từ hợp lệ, được khấu trừ tỷ lệ tương ứng với thời gian đã làm việc sau đào tạo.",
+      "keywords": [
+        "bồi thường chi phí đào tạo",
+        "cam kết làm việc 5 năm",
+        "phạt 50 triệu nếu nghỉ việc",
+        "phạt 100 triệu đào tạo",
+        "hoàn trả chi phí đào tạo"
+      ],
+      "statutory_citation": "Điều 62 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_WAGE_DEDUCTION_ILLEGAL",
+      "rule_name": "Phạt tiền, trừ lương thay cho hình thức xử lý kỷ luật lao động",
+      "category": "Kỷ luật & Xử phạt",
+      "risk_level": "RED",
+      "legal_basis": "Điều 127 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định phạt tiền hoặc trừ thẳng vào lương của người lao động khi vi phạm nội quy, đi muộn, làm việc không đạt KPI hoặc phạm sai sót (ví dụ: 'đi muộn phạt 200k/lần', 'làm sai trừ 10% lương').",
+      "explanation": "Điều 127 BLLĐ 2019 nghiêm cấm tuyệt đối hành vi dùng hình thức phạt tiền, cắt lương thay cho việc xử lý kỷ luật lao động. Xử lý kỷ luật lao động chỉ được áp dụng 4 hình thức: Khiển trách; Kéo dài thời hạn nâng lương không quá 06 tháng; Cách chức; Sa thải.",
+      "suggested_clause": "Việc xử lý vi phạm kỷ luật lao động được thực hiện theo đúng trình tự và các hình thức quy định tại Điều 124 Bộ luật Lao động 2019 và Nội quy lao động của Công ty; Công ty không áp dụng hình thức phạt tiền hoặc cắt trừ tiền lương của Người lao động.",
+      "keywords": [
+        "phạt tiền",
+        "trừ tiền lương",
+        "phạt 200.000",
+        "phạt 500.000",
+        "cắt lương vi phạm",
+        "trừ vào lương tháng"
+      ],
+      "statutory_citation": "Điều 127 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_MANDATORY_OVERTIME",
+      "rule_name": "Ép buộc làm thêm giờ (OT) hoặc vi phạm giới hạn giờ làm thêm",
+      "category": "Thời giờ làm việc & Nghỉ ngơi",
+      "risk_level": "RED",
+      "legal_basis": "Điều 107 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định người lao động bắt buộc phải làm thêm giờ khi công ty yêu cầu mà không cần sự đồng ý, hoặc quy định số giờ làm thêm vượt quá 40 giờ trong 01 tháng hoặc 200 giờ trong 01 năm.",
+      "explanation": "Khoản 2 Điều 107 BLLĐ 2019 quy định người sử dụng lao động chỉ được sử dụng người lao động làm thêm giờ khi có sự đồng ý của người lao động và phải bảo đảm số giờ làm thêm không quá giới hạn quy định.",
+      "suggested_clause": "Việc làm thêm giờ chỉ được thực hiện trên cơ sở thỏa thuận tự nguyện của Người lao động và tuân thủ các giới hạn về thời giờ làm thêm cũng như mức trả lương làm thêm giờ theo đúng quy định tại Điều 98 và Điều 107 Bộ luật Lao động 2019.",
+      "keywords": [
+        "bắt buộc làm thêm giờ",
+        "bắt buộc OT",
+        "làm thêm giờ không từ chối",
+        "OT không giới hạn",
+        "phải làm ngoài giờ"
+      ],
+      "statutory_citation": "Điều 107 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_INSURANCE_EVASION",
+      "rule_name": "Trốn đóng hoặc thỏa thuận không tham gia BHXH, BHYT, BHTN bắt buộc",
+      "category": "Bảo hiểm & An sinh",
+      "risk_level": "RED",
+      "legal_basis": "Khoản 1 Điều 168 Bộ luật Lao động 2019 & Luật Bảo hiểm xã hội",
+      "trigger_condition": "Hợp đồng quy định người lao động tự túc đóng bảo hiểm, hoặc thỏa thuận hai bên không tham gia BHXH, BHYT, BHTN, hoặc công ty cộng một khoản tiền tượng trưng vào lương để miễn trừ nghĩa vụ đóng bảo hiểm theo luật định.",
+      "explanation": "Tham gia BHXH, BHYT, BHTN bắt buộc là nghĩa vụ pháp lý bắt buộc đối với hợp đồng lao động từ đủ 01 tháng trở lên. Mọi thỏa thuận từ chối đóng hoặc né tránh đóng bảo hiểm đều bị pháp luật coi là vô hiệu.",
+      "suggested_clause": "Người sử dụng lao động và Người lao động có trách nhiệm tham gia và đóng Bảo hiểm xã hội, Bảo hiểm y tế, Bảo hiểm thất nghiệp bắt buộc theo đúng tỷ lệ và mức lương đóng do Luật Bảo hiểm xã hội quy định.",
+      "keywords": [
+        "không đóng BHXH",
+        "tự túc bảo hiểm",
+        "tự mua bảo hiểm",
+        "miễn đóng bảo hiểm",
+        "không tham gia BHXH"
+      ],
+      "statutory_citation": "Khoản 1 Điều 168 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_UNILATERAL_TERMINATION_NOTICE",
+      "rule_name": "Đơn phương chấm dứt hợp đồng không tuân thủ thời hạn báo trước",
+      "category": "Chấm dứt hợp đồng",
+      "risk_level": "RED",
+      "legal_basis": "Điều 36 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định người sử dụng lao động có quyền cho người lao động nghỉ việc bất kỳ lúc nào mà không cần báo trước hoặc thời hạn báo trước ngắn hơn quy định (ít nhất 45 ngày với HĐ không xác định thời hạn, 30 ngày với HĐ từ 12-36 tháng, 03 ngày làm việc với HĐ dưới 12 tháng).",
+      "explanation": "Điều 36 BLLĐ 2019 quy định rõ các căn cứ và thời hạn báo trước luật định khi người sử dụng lao động đơn phương chấm dứt hợp đồng lao động. Quy định cho nghỉ việc tùy tiện là sa thải trái pháp luật.",
+      "suggested_clause": "Mỗi bên có quyền đơn phương chấm dứt hợp đồng lao động theo các trường hợp luật định và phải thông báo bằng văn bản cho bên kia trước ít nhất 30 ngày (hoặc 45 ngày đối với hợp đồng không xác định thời hạn).",
+      "keywords": [
+        "cho nghỉ việc bất kỳ lúc nào",
+        "đuổi việc ngay",
+        "chấm dứt không cần báo trước",
+        "nghỉ việc trong 24h",
+        "thông báo trước 03 ngày"
+      ],
+      "statutory_citation": "Điều 36 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_WAGE_DEDUCTION_LIMIT",
+      "rule_name": "Khấu trừ tiền lương vượt quá 30% mức tiền lương tháng",
+      "category": "Tiền lương & Thử việc",
+      "risk_level": "RED",
+      "legal_basis": "Điều 102 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định người sử dụng lao động được khấu trừ lương hàng tháng vượt quá 30% mức tiền lương thực nhận của người lao động để bù đắp thiệt hại hoặc trừ các khoản nợ nội bộ.",
+      "explanation": "Khoản 3 Điều 102 BLLĐ 2019 quy định mức khấu trừ tiền lương hàng tháng không được quá 30% mức tiền lương thực nhận hàng tháng của người lao động sau khi đã trích nộp các khoản BHXH, BHYT, BHTN và thuế thu nhập cá nhân.",
+      "suggested_clause": "Việc khấu trừ tiền lương chỉ được thực hiện trong trường hợp bồi thường thiệt hại tài sản theo Điều 129 BLLĐ 2019, người lao động có quyền được thảo luận và mức khấu trừ mỗi tháng không vượt quá 30% tiền lương thực nhận.",
+      "keywords": [
+        "khấu trừ 50% lương",
+        "trừ toàn bộ lương",
+        "giữ lại 40% lương",
+        "khấu trừ lương không giới hạn"
+      ],
+      "statutory_citation": "Điều 102 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_WEEKLY_REST_ABSENT",
+      "rule_name": "Không bảo đảm ngày nghỉ hàng tuần hoặc nghỉ lễ tết có lương",
+      "category": "Thời giờ làm việc & Nghỉ ngơi",
+      "risk_level": "YELLOW",
+      "legal_basis": "Điều 111 & Điều 112 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định làm việc liên tục 7 ngày/tuần không có ngày nghỉ cố định, hoặc quy định làm việc vào các ngày Lễ, Tết theo lịch Nhà nước mà không trả lương làm thêm giờ theo mức luật định.",
+      "explanation": "Điều 111 BLLĐ 2019 bảo đảm mỗi tuần người lao động được nghỉ ít nhất 24 giờ liên tục. Làm việc vào ngày nghỉ lễ, tết phải được tính lương làm thêm giờ ít nhất bằng 300% chưa kể tiền lương ngày lễ (Điều 98).",
+      "suggested_clause": "Người lao động được nghỉ ít nhất 01 ngày/tuần (thường vào ngày Chủ Nhật) và được nghỉ hưởng nguyên lương vào các ngày Lễ, Tết theo quy định của pháp luật lao động Việt Nam.",
+      "keywords": [
+        "làm việc 7 ngày/tuần",
+        "không có ngày nghỉ",
+        "nghỉ lễ không hưởng lương",
+        "làm việc cả chủ nhật"
+      ],
+      "statutory_citation": "Điều 111 & Điều 112 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_UNREASONABLE_KPI_FORFEITURE",
+      "rule_name": "Tịch thu toàn bộ lương cứng khi không đạt chỉ tiêu KPI",
+      "category": "Tiền lương & Thử việc",
+      "risk_level": "RED",
+      "legal_basis": "Điều 90 Bộ luật Lao động 2019",
+      "trigger_condition": "Hợp đồng quy định nếu không đạt KPI hoặc doanh số thì bị cắt hoàn toàn lương cơ bản/lương cứng, chuyển thành làm việc không lương.",
+      "explanation": "Tiền lương theo công việc (lương cơ bản thỏa thuận) không được thấp hơn mức lương tối thiểu vùng do Chính phủ quy định khi người lao động đã làm đủ thời giờ làm việc bình thường.",
+      "suggested_clause": "Người lao động được bảo đảm nhận đủ mức tiền lương cơ bản thỏa thuận theo thời giờ làm việc thực tế; chỉ tiêu KPI chỉ ảnh hưởng đến phần thưởng hiệu quả công việc (lương kinh doanh/thưởng doanh số) theo Quy chế lương thưởng của Công ty.",
+      "keywords": [
+        "không đạt KPI không lương",
+        "cắt toàn bộ lương",
+        "không đạt doanh số không trả lương",
+        "trừ hết lương cơ bản"
+      ],
+      "statutory_citation": "Điều 90 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    },
+    {
+      "rule_id": "RULE_LABOR_JURISDICTION_EXCLUSIVE",
+      "rule_name": "Hạn chế quyền khiếu nại, tố cáo hoặc khởi kiện ra Tòa án/Thanh tra Lao động",
+      "category": "Giải quyết tranh chấp",
+      "risk_level": "RED",
+      "legal_basis": "Điều 179 Bộ luật Lao động 2019 & Bộ luật Tố tụng Dân sự",
+      "trigger_condition": "Hợp đồng quy định 'mọi tranh chấp do Người sử dụng lao động toàn quyền phán quyết cuối cùng, Người lao động cam kết không khiếu nại tới cơ quan quản lý nhà nước hoặc Tòa án'.",
+      "explanation": "Quyền tiếp cận công lý và khiếu nại lên Thanh tra Lao động hoặc khởi kiện ra Tòa án có thẩm quyền là quyền hiến định không thể bị tước đoạt bởi bất kỳ thỏa thuận dân sự nào.",
+      "suggested_clause": "Tranh chấp phát sinh giữa hai bên trước hết được giải quyết thông qua thương lượng hòa giải. Trường hợp không hòa giải được, mỗi bên đều có quyền yêu cầu Hòa giải viên lao động, Hội đồng trọng tài lao động hoặc Tòa án có thẩm quyền giải quyết theo quy định pháp luật.",
+      "keywords": [
+        "không được khiếu nại",
+        "công ty toàn quyền quyết định",
+        "cam kết không khởi kiện",
+        "quyết định của giám đốc là cuối cùng"
+      ],
+      "statutory_citation": "Điều 179 Bộ luật Lao động 2019",
+      "reference_url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=139260"
+    }
+  ]
+}
+

@@ -1,0 +1,39 @@
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập - Tự do - Hạnh phúc
+---------***---------
+
+HỢP ĐỒNG LAO ĐỘNG VÀ THỎA THUẬN BẢO MẬT KHÔNG CẠNH TRANH (NDA)
+
+Số: 45/2026/HĐLĐ-GLOBAL
+Ký ngày 01 tháng 06 năm 2026 tại Hà Nội.
+
+BÊN SỬ DỤNG LAO ĐỘNG:
+- CÔNG TY CỔ PHẦN CÔNG NGHỆ TÀI CHÍNH GLOBAL FINTECH
+- Đại diện: Ông Trần Đức Thắng - Tổng Giám đốc
+- Địa chỉ: Tòa nhà Keangnam Landmark 72, Nam Từ Liêm, Hà Nội.
+
+BÊN LAO ĐỘNG:
+- Ông: Đỗ Minh Khoa
+- Chức danh: Trưởng nhóm Phát triển Backend (Backend Tech Lead)
+- Lương chính thức: 35.000.000 VNĐ/tháng.
+
+NỘI DUNG THỎA THUẬN:
+
+Điều 1: Đào tạo chuyên sâu và cam kết làm việc
+- Bên B được tham gia khóa đào tạo nội bộ do chuyên gia nước ngoài giảng dạy.
+- Bên B cam kết làm việc tối thiểu 05 năm tại Bên A kể từ ngày kết thúc đào tạo. Nếu Bên B nghỉ việc trước hạn vì bất kỳ lý do gì, Bên B phải bồi thường khoản tiền phạt 100.000.000 đồng mà không cần chứng từ chi phí thực tế.
+
+Điều 2: Điều khoản không cạnh tranh sau khi chấm dứt hợp đồng (Non-Compete Clause)
+- Trong thời hạn 03 năm kể từ ngày chấm dứt hợp đồng lao động tại Bên A, Bên B bị cấm làm việc, tư vấn hoặc hợp tác dưới mọi hình thức cho bất kỳ doanh nghiệp nào hoạt động trong lĩnh vực Fintech, Ngân hàng hoặc Công nghệ thông tin trên phạm vi toàn quốc Việt Nam.
+- Trong thời gian này, Công ty không có nghĩa vụ chi trả bất kỳ khoản trợ cấp tài chính bù đắp nào cho Bên B. Nếu Bên B vi phạm, Bên B phải bồi thường 200.000.000 đồng.
+
+Điều 3: Xử lý sự cố và khấu trừ lương
+- Nếu hệ thống gặp sự cố bug do lỗi code của Bên B dẫn đến chậm tiến độ, Công ty có quyền khấu trừ 50% tiền lương tháng của Bên B cho đến khi khắc phục xong sự cố.
+
+Điều 4: Thẩm quyền giải quyết tranh chấp
+- Mọi khiếu nại tranh chấp giữa hai bên do Tổng Giám đốc Công ty toàn quyền phán quyết cuối cùng; Bên B cam kết không khiếu nại tới cơ quan quản lý nhà nước hoặc khởi kiện ra Tòa án.
+
+ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
+(Ký tên, đóng dấu)                               (Ký tên)
+Trần Đức Thắng                                   Đỗ Minh Khoa
+

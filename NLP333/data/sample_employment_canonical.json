@@ -1,0 +1,81 @@
+{
+  "contract_id": "HD_LD_CANONICAL_001",
+  "contract_type": "employment",
+  "document_title": "HỢP ĐỒNG LAO ĐỘNG XÁC ĐỊNH THỜI HẠN",
+  "legal_framework": "Căn cứ Bộ luật Lao động số 45/2019/QH14 và Nghị định số 145/2020/NĐ-CP của Chính phủ",
+  "status": "CANONICAL_CLEAN",
+  "compliance_score": 10.0,
+  "metadata": {
+    "employer": {
+      "company_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ VÀ TRUYỀN THÔNG SAO KHUÊ",
+      "tax_code": "0109887766",
+      "headquarters_address": "Tầng 12, Tòa nhà Innovation Hub, Số 1 Phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, TP. Hà Nội",
+      "legal_representative": "Ông Nguyễn Thế Hoàng",
+      "representative_role": "Tổng Giám đốc",
+      "contact_phone": "0243.789.9999",
+      "email": "contact@saokhuetech.vn"
+    },
+    "employee": {
+      "full_name": "Trần Hải Đăng",
+      "date_of_birth": "12/08/2001",
+      "gender": "Nam",
+      "national_id_cccd": "038201009876",
+      "id_issue_date": "15/05/2021",
+      "id_issue_place": "Cục Cảnh sát QLHC về TTXH",
+      "permanent_address": "Số 45 Đường Hoàng Văn Thụ, Phường Phan Đình Phùng, TP. Thái Nguyên, Tỉnh Thái Nguyên",
+      "current_residence": "Phòng 402, Nhà số 18 Ngõ 20 Phố Hồ Tùng Mậu, Quận Cầu Giấy, TP. Hà Nội",
+      "contact_phone": "0987.654.321",
+      "qualification": "Kỹ sư Công nghệ Thông tin"
+    },
+    "job_details": {
+      "job_title": "Kỹ sư Phát triển Phần mềm (Software Engineer)",
+      "department": "Khối Công nghệ - Phòng R&D",
+      "work_location": "Tầng 12, Tòa nhà Innovation Hub, Số 1 Phố Duy Tân, Quận Cầu Giấy, TP. Hà Nội",
+      "core_responsibilities": "Phát triển hệ thống backend, tối ưu hóa cơ sở dữ liệu, xây dựng API và tham gia nghiên cứu ứng dụng AI vào sản phẩm."
+    },
+    "contract_terms": {
+      "contract_type_str": "Hợp đồng lao động xác định thời hạn",
+      "contract_term_months": 24,
+      "start_date": "01/10/2026",
+      "end_date": "30/09/2028",
+      "notice_period_days": 30
+    },
+    "salary_and_compensation": {
+      "official_salary_monthly_vnd": 22000000.0,
+      "official_salary_words": "Hai mươi hai triệu đồng chẵn",
+      "lunch_allowance_vnd": 1000000.0,
+      "transport_allowance_vnd": 500000.0,
+      "performance_bonus_description": "Thưởng hiệu quả công việc theo quý và lương tháng 13 theo Quy chế tài chính của Công ty",
+      "payment_method": "Chuyển khoản qua tài khoản ngân hàng của Người lao động",
+      "payment_cycle": "Hàng tháng, thanh toán vào ngày 05 của tháng liền kề",
+      "salary_review_cycle": "Định kỳ 12 tháng/lần xem xét nâng lương dựa trên đánh giá hiệu suất (KPI)"
+    },
+    "probation": {
+      "is_probation_included": true,
+      "probation_duration_days": 60,
+      "probation_salary_monthly_vnd": 18700000.0,
+      "probation_salary_percentage": 85.0,
+      "legal_compliance_note": "Tuân thủ Điều 25 và Điều 26 BLLĐ 2019 (đúng 60 ngày đối với trình độ đại học và đúng 85% lương chính thức)"
+    },
+    "working_hours_and_rest": {
+      "standard_hours_per_day": 8,
+      "standard_hours_per_week": 40,
+      "work_schedule": "Từ 08h30 đến 17h30, từ thứ Hai đến thứ Sáu (nghỉ trưa từ 12h00 đến 13h00)",
+      "weekly_rest_days": "Nghỉ thứ Bảy và Chủ Nhật hàng tuần",
+      "annual_leave_days": 12,
+      "public_holiday_days": 11,
+      "overtime_policy": "Làm thêm giờ trên tinh thần tự nguyện, tối đa không quá 40 giờ/tháng và được hưởng chế độ lương làm thêm giờ từ 150% đến 300% theo Điều 98 BLLĐ 2019"
+    },
+    "insurance_and_welfare": {
+      "social_insurance": "Đóng theo tỷ lệ luật định (Doanh nghiệp: 17.5%, Người lao động: 8%)",
+      "health_insurance": "Đóng theo tỷ lệ luật định (Doanh nghiệp: 3%, Người lao động: 1.5%)",
+      "unemployment_insurance": "Đóng theo tỷ lệ luật định (Doanh nghiệp: 1%, Người lao động: 1%)",
+      "periodic_health_check": "Được khám sức khỏe định kỳ hàng năm do Công ty đài thọ",
+      "labor_protection": "Được trang bị máy tính xách tay chuyên dụng và các thiết bị văn phòng đầy đủ"
+    }
+  },
+  "dieu_khoan_vi_pham": [],
+  "danh_gia_tong_the": "Hợp đồng lao động chuẩn mực 100%, tuân thủ đầy đủ 10 nội dung bắt buộc quy định tại Điều 21 Bộ luật Lao động 2019; thời gian thử việc và lương thử việc chuẩn xác; các quyền và nghĩa vụ giữa Người sử dụng lao động và Người lao động cân bằng, minh bạch, không chứa bất kỳ điều khoản vi phạm điều cấm hoặc bất lợi trái luật.",
+  "toan_van_hop_dong": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n---------***---------\n\nHỢP ĐỒNG LAO ĐỘNG\nSố: 108/2026/HĐLĐ-SKT\n\nCăn cứ Bộ luật Lao động số 45/2019/QH14 được Quốc hội nước Cộng hòa xã hội chủ nghĩa Việt Nam thông qua ngày 20/11/2019;\nCăn cứ nhu cầu và khả năng của hai bên,\n\nHôm nay, ngày 01 tháng 10 năm 2026, tại Trụ sở Công ty Cổ phần Công nghệ và Truyền thông Sao Khuê, chúng tôi gồm có:\n\nBÊN SỬ DỤNG LAO ĐỘNG (BÊN A):\n- Tên doanh nghiệp: CÔNG TY CỔ PHẦN CÔNG NGHỆ VÀ TRUYỀN THÔNG SAO KHUÊ\n- Mã số doanh nghiệp/Mã số thuế: 0109887766\n- Địa chỉ trụ sở chính: Tầng 12, Tòa nhà Innovation Hub, Số 1 Phố Duy Tân, Cầu Giấy, Hà Nội\n- Đại diện bởi: Ông Nguyễn Thế Hoàng - Chức vụ: Tổng Giám đốc\n- Điện thoại liên hệ: 0243.789.9999\n\nBÊN LAO ĐỘNG (BÊN B):\n- Họ và tên: Trần Hải Đăng\n- Sinh ngày: 12/08/2001 - Giới tính: Nam\n- Số CCCD: 038201009876 cấp ngày: 15/05/2021 tại: Cục Cảnh sát QLHC về TTXH\n- Nơi đăng ký thường trú: Số 45 Đường Hoàng Văn Thụ, TP. Thái Nguyên, Tỉnh Thái Nguyên\n- Nơi ở hiện nay: Số 18 Ngõ 20 Phố Hồ Tùng Mậu, Cầu Giấy, Hà Nội\n- Trình độ chuyên môn: Kỹ sư Công nghệ Thông tin\n\nHai bên cùng nhau thống nhất ký kết Hợp đồng lao động với các điều khoản sau đây:\n\nĐiều 1: Công việc, địa điểm làm việc và thời hạn hợp đồng\n1. Loại hợp đồng: Hợp đồng lao động xác định thời hạn 24 tháng, tính từ ngày 01/10/2026 đến hết ngày 30/09/2028.\n2. Vị trí chuyên môn: Kỹ sư Phát triển Phần mềm (Software Engineer).\n3. Địa điểm làm việc: Trụ sở Công ty tại Tầng 12, Tòa nhà Innovation Hub, Số 1 Phố Duy Tân, Cầu Giấy, Hà Nội và các địa điểm khác theo yêu cầu dự án sau khi có sự đồng thuận của hai bên.\n4. Thời gian thử việc: 60 ngày kể từ ngày bắt đầu làm việc. Trong thời gian thử việc, Bên B được hưởng 85% mức lương chính thức theo đúng quy định tại Điều 25 và Điều 26 Bộ luật Lao động 2019.\n\nĐiều 2: Thời giờ làm việc và thời giờ nghỉ ngơi\n1. Thời giờ làm việc: 8 giờ/ngày, từ thứ Hai đến thứ Sáu (40 giờ/tuần), từ 08h30 đến 17h30 (nghỉ trưa 01 giờ).\n2. Nghỉ hàng tuần: Bên B được nghỉ trọn vẹn thứ Bảy và Chủ Nhật hàng tuần.\n3. Nghỉ lễ, tết, phép năm: Bên B được nghỉ làm việc hưởng nguyên lương vào 11 ngày Lễ, Tết theo quy định của Nhà nước và 12 ngày phép năm theo quy định tại Điều 112 và Điều 113 Bộ luật Lao động 2019.\n4. Làm thêm giờ: Chỉ được thực hiện khi có sự thỏa thuận tự nguyện của Bên B, bảo đảm không quá 40 giờ/tháng và được thanh toán tiền lương làm thêm giờ theo đúng quy định tại Điều 98 Bộ luật Lao động 2019.\n\nĐiều 3: Tiền lương, phụ cấp và hình thức thanh toán\n1. Tiền lương chính thức: 22.000.000 đồng/tháng (Bằng chữ: Hai mươi hai triệu đồng chẵn).\n2. Phụ cấp hàng tháng: Phụ cấp ăn trưa 1.000.000 đồng/tháng; Phụ cấp đi lại 500.000 đồng/tháng.\n3. Hình thức và kỳ hạn thanh toán: Tiền lương được chuyển khoản vào tài khoản ngân hàng của Bên B vào ngày 05 hàng tháng.\n4. Nâng lương: Công ty đánh giá hiệu quả công việc định kỳ 12 tháng/lần để xem xét điều chỉnh mức lương theo Quy chế lương thưởng.\n\nĐiều 4: Bảo hiểm xã hội, Y tế và An sinh lao động\n1. Bên A và Bên B có trách nhiệm tham gia đóng Bảo hiểm xã hội, Bảo hiểm y tế, Bảo hiểm thất nghiệp theo đúng mức lương đóng và tỷ lệ pháp luật quy định.\n2. Bên B được trang bị đầy đủ phương tiện làm việc (máy tính, thiết bị) và được khám sức khỏe định kỳ ít nhất 01 lần/năm do Bên A chi trả kinh phí.\n\nĐiều 5: Quyền và nghĩa vụ của Người sử dụng lao động (Bên A)\n1. Bố trí công việc và bảo đảm điều kiện làm việc an toàn, lành mạnh cho Bên B.\n2. Thanh toán tiền lương và các chế độ đãi ngộ đầy đủ, đúng thời hạn.\n3. Không giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ và không thu bất kỳ khoản tiền đặt cọc hay thế chân nào từ Bên B theo đúng quy định tại Điều 17 Bộ luật Lao động 2019.\n\nĐiều 6: Quyền và nghĩa vụ của Người lao động (Bên B)\n1. Hoàn thành công việc được giao với tinh thần trách nhiệm, tuân thủ Nội quy lao động và quy trình bảo mật thông tin nội bộ của Công ty.\n2. Được quyền đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 35 Bộ luật Lao động 2019 và phải thông báo bằng văn bản cho Bên A trước ít nhất 30 ngày.\n\nĐiều 7: Chấm dứt hợp đồng lao động\nHợp đồng này chấm dứt theo các trường hợp quy định tại Điều 34 Bộ luật Lao động 2019. Trường hợp mỗi bên đơn phương chấm dứt hợp đồng hợp pháp phải tuân thủ thời hạn báo trước bằng văn bản theo đúng Điều 35 và Điều 36 Bộ luật Lao động 2019.\n\nĐiều 8: Giải quyết tranh chấp lao động\nTranh chấp lao động phát sinh trước hết được giải quyết thông qua thương lượng, hòa giải. Trường hợp không hòa giải được, mỗi bên đều có quyền yêu cầu Hòa giải viên lao động, Hội đồng trọng tài lao động hoặc Tòa án nhân dân có thẩm quyền giải quyết theo quy định pháp luật.\n\nĐiều 9: Điều khoản thi hành\nHợp đồng này có hiệu lực kể từ ngày 01/10/2026. Hợp đồng gồm 09 điều, được lập thành 02 bản có giá trị pháp lý như nhau, mỗi bên giữ 01 bản để thực hiện.\n\n      ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B\n     (Ký tên và đóng dấu)                             (Ký và ghi rõ họ tên)\n\n\n      Nguyễn Thế Hoàng                                  Trần Hải Đăng"
+}
+

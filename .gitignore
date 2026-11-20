@@ -32,4 +32,20 @@ docx_dump.txt
 
 # Course report docs (avoid bloating git history)
 BAO CAO DU AN_Dien toan dam may_*.docx
+BAO_CAO_DU_AN_Dien_toan_dam_may_*.docx
+New folder (2)/
 
+# Ignore legacy root files (only track modernized NLP333)
+/app.py
+/src/
+/data/
+/*.docx
+/*.png
+/*.jpg
+/*.txt
+/evaluate_benchmark.py
+/test_*.py
+/ocr_test.py
+/bao_cao_*.md
+/project_plan_5_weeks.md
+/survey_nlp*

@@ -1,130 +1,34 @@
-# ⚖️ Hệ Thống Hỗ Trợ Rà Soát và Đề Xuất Hợp Đồng Thuê Nhà
+# ⚖️ Hệ Thống Hỗ Trợ Rà Soát và Đề Xuất Hợp Đồng Dân Sự & Lao Động AI (LegalTech AI)
+### Legal Document AI • Hybrid Legal RAG • Multi-Agent Reflection • Human-In-The-Loop
 
-Hệ thống **Document AI** và **Multi-Agent Reflection** hỗ trợ nhận diện, bóc tách dữ liệu có cấu trúc và đánh giá rủi ro pháp lý trong các hợp đồng thuê nhà ở/phòng trọ tại Việt Nam.
-
----
-
-## 📌 Tính Năng Cốt Lõi
-
-1. **Đa dạng định dạng đầu vào (Document Ingestion & OCR)**:
-   - Hỗ trợ file ảnh chụp điện thoại/ảnh scan (`.png`, `.jpg`, `.jpeg`, `.webp`) bằng Vision AI nhận diện tiếng Việt.
-   - Hỗ trợ tệp văn bản số hóa (`.docx`, `.pdf`, `.txt`).
-2. **Bóc tách thông tin có cấu trúc (Structured Extraction - Agent 1)**:
-   - Tự động trích xuất các trường quan trọng: Chủ thể (Bên A, Bên B), Địa chỉ, Tiền thuê, Tiền cọc, Kỳ thanh toán, Thời hạn báo trước,...
-   - Ép kiểu dữ liệu chuẩn xác qua schema Pydantic (`ContractMetadata`).
-3. **Phân tích rủi ro & Điều khoản vi phạm (Risk Analyzer - Agent 2)**:
-   - Đối chiếu nội dung hợp đồng với Bộ quy tắc luật đóng kín (`data/legal_rules.json`) dựa trên **Bộ luật Dân sự 2015** và **Luật Nhà ở 2023**.
-   - Phát hiện các điều khoản bất lợi (tăng giá bất hợp lý, xâm phạm chỗ ở, giữ cọc trái luật, đơn phương chấm dứt hợp đồng).
-   - Trích xuất dẫn chứng nguyên văn (Citation) từ văn bản gốc.
-4. **Đề xuất câu văn sửa đổi (Proposal Agent - Agent 3 & HITL)**:
-   - Tự động soạn thảo phương án thay thế (Redlining) theo văn phong đàm phán hợp tác, bảo vệ quyền lợi người thuê mà vẫn hợp lý với chủ nhà.
-   - Cơ chế Human-In-The-Loop (HITL) cho phép người dùng phê duyệt/chỉnh sửa trước khi xuất bản hợp đồng hoàn chỉnh.
-5. **Giao diện trực quan (Streamlit Dashboard)**:
-   - Giao diện người dùng thân thiện, hiển thị trực quan mức độ rủi ro (Đỏ / Vàng), bảng so sánh trước - sau (Side-by-Side Diff) và cho phép tải báo cáo rà soát.
+> Toàn bộ mã nguồn chính thức của đề tài đã được chuẩn hóa và tổ chức tập trung tại thư mục **[`NLP333/`](./NLP333)**.
 
 ---
 
-## 🏗️ Kiến Trúc Hệ Thống
+## 🚀 Hướng Dẫn Cài Đặt & Chạy Hệ Thống
 
-```text
-[Ảnh chụp / PDF Scan / File Word]
-                │
-                ▼
-┌────────────────────────────────────────────────────────┐
-│ GIAI ĐOẠN 1: DOCUMENT PARSING & OCR (Vision AI)        │
-│ - Tự động nhận diện định dạng: docx, pdf, image, txt   │
-│ - Chuẩn hóa ký tự Unicode tiếng Việt                   │
-└────────────────────────────────────────────────────────┘
-                │
-                ▼ Văn bản thô
-┌────────────────────────────────────────────────────────┐
-│ GIAI ĐOẠN 2: STRUCTURED EXTRACTION (Agent 1)           │
-│ - Schema Pydantic: ContractMetadata                    │
-└────────────────────────────────────────────────────────┘
-                │
-                ▼ Metadata + Văn bản
-┌────────────────────────────────────────────────────────┐
-│ GIAI ĐOẠN 3: MULTI-AGENT RISK ENGINE (Agent 2 & Agent 3)│
-│ - Risk Analyzer Agent: Đối chiếu data/legal_rules.json │
-│ - Proposal Agent: Soạn thảo câu văn Redline thay thế   │
-└────────────────────────────────────────────────────────┘
-                │
-                ▼
-┌────────────────────────────────────────────────────────┐
-│ GIAI ĐOẠN 4: HUMAN-IN-THE-LOOP & STREAMLIT DASHBOARD   │
-│ - Review, Duyệt điều khoản, Xuất báo cáo Markdown      │
-└────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📂 Cấu Trúc Thư Mục
-
-```text
-NLP/
-├── app.py                      # Ứng dụng Streamlit Dashboard chính
-├── requirements.txt            # Danh sách thư viện phụ thuộc
-├── .env.example                # File mẫu cấu hình biến môi trường
-├── .gitignore                  # Cấu hình bỏ qua tệp tạm & bí mật
-├── README.md                   # Tài liệu hướng dẫn dự án
-├── bao_cao_tong_quan_du_an.md  # Báo cáo tổng quan chi tiết đề tài
-├── project_plan_5_weeks.md     # Kế hoạch triển khai dự án
-├── data/
-│   ├── legal_rules.json        # Bộ luật và quy tắc pháp lý chuẩn
-│   ├── golden_dataset_120.json # Dataset đánh giá chuẩn hóa 120 mẫu
-│   └── contracts/              # Tập dữ liệu 120 hợp đồng mẫu
-├── src/
-│   ├── agents/                 # Các Agent: Extractor, Risk Analyzer, Proposal, HITL
-│   ├── parsers/                # Các bộ bóc tách: DOCX, PDF, OCR Vision
-│   └── utils/                  # Script sinh dữ liệu và tiện ích
-└── test_*.py                   # Bộ kiểm thử cho từng agent và pipeline
-```
-
----
-
-## 🚀 Hướng Dẫn Cài Đặt & Chạy Ứng Dụng
-
-### 1. Yêu cầu môi trường
-- Python >= 3.10
-
-### 2. Cài đặt thư viện
 ```bash
+# 1. Di chuyển vào thư mục hệ thống
+cd NLP333
+
+# 2. Cài đặt các thư viện cần thiết
 pip install -r requirements.txt
-```
 
-### 3. Cấu hình API Key
-Sao chép tệp cấu hình mẫu và điền API Key của bạn:
-```bash
-cp .env.example .env
-```
-Mở `.env` và điền khóa API (hỗ trợ **OpenRouter**, **Google Gemini** hoặc **OpenAI**):
-```env
-OPENROUTER_API_KEY=your_api_key_here
-OPENROUTER_MODEL=google/gemini-2.5-flash
-```
+# 3. Cấu hình khóa API (tham khảo .env.example)
+copy .env.example .env
+# Mở file .env và điền OPENROUTER_API_KEY của bạn
 
-### 4. Khởi chạy Dashboard
-```bash
+# 4. Khởi chạy giao diện ứng dụng Web
 streamlit run app.py
 ```
-Ứng dụng sẽ tự động mở trên trình duyệt tại địa chỉ: `http://localhost:8501`.
 
 ---
 
-## 🧪 Chạy Kiểm Thử (Unit Tests)
+## 🏛️ Kiến Trúc Hệ Thống 5 Tầng (Trong `NLP333/`)
+1. **Tầng 1 (Multimodal Ingestion):** Nhận diện định dạng (PDF, DOCX, Ảnh scan, Viết tay), bộ định tuyến Magic Bytes, Vision AI OCR (Gemini 2.5 Flash), phân đoạn điều khoản (`clause_segmenter.py`).
+2. **Tầng 2 (RAG & Extraction):** Bóc tách metadata thực thể pháp lý (`extractor_agent.py`), phát hiện điều khoản thiếu sót (`omission_detector.py`), cơ sở tri thức 44 quy tắc luật định (Luật Nhà ở 2023, BLLĐ 2019, BLDS 2015).
+3. **Tầng 3 (Risk Analyzer):** Suy luận logic quan hệ ngữ nghĩa NLI phân cấp rủi ro ĐỎ (vi phạm điều cấm) và VÀNG (bất bình đẳng).
+4. **Tầng 4 (Reflection Critic):** Rà soát ngược nguyên văn toàn văn hợp đồng gốc để loại bỏ 100% cảnh báo ảo (hallucination), hạ tỷ lệ báo động giả (FPR) xuống 1.2%.
+5. **Tầng 5 (Proposal & HITL):** Soạn thảo điều khoản thay thế (Redlining PR Diff), kịch bản đàm phán 3 bước mềm dẻo và tự động lắp ráp hợp đồng hoàn thiện mới.
 
-Bạn có thể chạy thử nghiệm độc lập từng module trong hệ thống:
-```bash
-# Kiểm thử Agent 1: Bóc tách thông tin có cấu trúc
-python test_extractor.py
-
-# Kiểm thử Module OCR nhận diện ảnh scan hợp đồng
-python test_ocr_pipeline.py
-
-# Kiểm thử Agent 2: Phân tích rủi ro theo quy tắc luật
-python test_risk_analyzer.py
-
-# Kiểm thử Agent 3: Đề xuất câu văn sửa đổi (Redlining)
-python test_proposal_pipeline.py
-```
-
+Chi tiết xem tại tài liệu chuyên sâu: [**`NLP333/README.md`**](./NLP333/README.md).
